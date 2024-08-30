@@ -9,15 +9,6 @@ public class Ordenador {
                 pedido.set(j, aux);
             }
         }
-        /*for (int i = 1; i < pedidos.size(); i++) {
-            Pedido key = pedidos.get(i);
-            int j = i - 1;
-            while (j >= 0 && pedidos.get(j).getTiempo() > key.getTiempo()) {
-                pedidos.set(j + 1, pedidos.get(j));
-                j = j - 1;
-            }
-            pedidos.set(j + 1, key);
-        }*/
 
     }
 }

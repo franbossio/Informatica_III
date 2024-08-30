@@ -17,12 +17,11 @@ public class Main {
             System.out.println("2-Ordenar por precio total");
             System.out.println("3-Ordenar por nombre del cliente");
             System.out.println("4-Mostrar lista de pedidos");
-            System.out.println("5-Salir");
+            System.out.println("5-Salir del programa");
             op=consola.nextInt();
             switch (op) {
                 case 1:
                 Ordenar.inserccion(pedido);
-
                     break;
                 case 2:
                     
