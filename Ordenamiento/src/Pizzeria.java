@@ -12,7 +12,6 @@ public class Pizzeria {
             String nombreCliente = nombres[random.nextInt(nombres.length)];
             int precioTotal = (random.nextInt(500-100+1)+10); // Precio entre 100 y 500
             int tiempoPreparacion = (random.nextInt(60 - 10 + 1 )+10); 
-
             pedido.add(new Pedido(nombreCliente, precioTotal, tiempoPreparacion));
         }
     }

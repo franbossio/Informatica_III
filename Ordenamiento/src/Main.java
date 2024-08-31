@@ -42,11 +42,5 @@ public class Main {
 
             }
         } while (op!=7);
-        
-
     }
-   
-       
-
-    
 }
