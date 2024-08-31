@@ -6,7 +6,7 @@ public class Main {
         List<Pedido> pedido=new ArrayList<>();
         Scanner consola=new Scanner(System.in);
         int op;
-        Ordenador Ordenar= new Ordenador();
+        Ordenador ordenar= new Ordenador();
         pedido.add(new Pedido("a", 10, 40));
         pedido.add(new Pedido("c", 60, 50));
         pedido.add(new Pedido("d", 25, 10));
@@ -21,13 +21,13 @@ public class Main {
             op=consola.nextInt();
             switch (op) {
                 case 1:
-                Ordenar.inserccion(pedido);
+                ordenar.inserccion(pedido);
                     break;
                 case 2:
-                    
+                    ordenar.shellsort(pedido);
                     break;
                 case 3:
-                    
+                    ordenar.quickSort(pedido,0 ,pedido.size()-1 );
                     break;
                 case 4: 
                 for (Object e : pedido) {
