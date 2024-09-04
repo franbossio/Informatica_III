@@ -19,7 +19,7 @@ public class PilasListasEnlazadas {
     }
 
     public boolean isEmpty(){//verificar si la pila esta vacia
-        
+        return top
     }
 
     public void makeEmty(){ ///hacer la pila vacia

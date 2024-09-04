@@ -1,4 +1,4 @@
-import java.lang.reflect.UndeclaredThrowableException;
+
 
 public class PilasArreglo{
     private int[] a;
@@ -19,19 +19,27 @@ public class PilasArreglo{
     }
 
     public void pop(){ //quitar lo que se agrego ultimo
-
+        if(isEmpty()){
+            throw new UnderflowException("ArrayStack pop");
+        }else{
+            topOfStack--;
+        }
     }
 
     public int top(){ //devolver el valor del top
         if(isEmpty()){
-            //throw new UndeclaredThrowableException();
+            throw new UnderflowException("ArrayStack top");
         }else{
             return a[topOfStack];
         }
     }
 
     public int topAndPop(){ //devolver y remover el valor del top
-        return a[topOfStack--];
+        if(isEmpty()){
+            throw new UnderflowException("ArrayStack top");
+        }else{
+            return a[topOfStack--];
+        }
     }
 
     public boolean isEmpty(){//verificar si la pila esta vacia
@@ -43,6 +51,6 @@ public class PilasArreglo{
     }
 
     private void doubleArray(){
-
+        a = (int []) new int[a.length*2];
     }
 }
