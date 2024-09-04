@@ -31,7 +31,7 @@ public class PilasArreglo{
     }
 
     public int topAndPop(){ //devolver y remover el valor del top
-        return 
+        return a[topOfStack--];
     }
 
     public boolean isEmpty(){//verificar si la pila esta vacia
