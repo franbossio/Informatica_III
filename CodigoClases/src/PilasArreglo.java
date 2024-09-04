@@ -17,6 +17,9 @@ public class PilasArreglo{
             a[++topOfStack]=x;
         }
     }
+     public int getTopOfStack() {
+         return topOfStack;
+     }
 
     public void pop(){ //quitar lo que se agrego ultimo
         if(isEmpty()){
@@ -53,4 +56,11 @@ public class PilasArreglo{
     private void doubleArray(){
         a = (int []) new int[a.length*2];
     }
+
+    public void mostrarPila(){
+        for(int i=0;i<=topOfStack;i++){
+            System.out.println(a[i]);
+        }
+    }
+
 }
