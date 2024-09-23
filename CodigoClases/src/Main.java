@@ -5,6 +5,12 @@ public class Main {
         stack.push(10);
         stack.push(20);
         stack.push(30);
-        System.out.println(stack.top());
+        stack.push(40);
+        stack.mostrarPila();
+        System.out.println("-----------------------------");
+        System.out.println(stack.topAndPop());
+        System.out.println("-----------------------------");
+        stack.mostrarPila();
+        
     }
 }

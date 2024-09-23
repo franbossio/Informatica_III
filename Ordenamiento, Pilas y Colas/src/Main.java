@@ -1,4 +1,4 @@
-
+/* 
 import java.util.*;
 
 public class Main {
@@ -8,6 +8,8 @@ public class Main {
         int op;
         Pizzeria pizzeria = new Pizzeria();
         Ordenador ordenar= new Ordenador();
+        StackArray pila = new StackArray();
+        ColasArray cola = new ColasArray();
        do { 
             System.out.println("Elige una opcion:");
             System.out.println("1-Ordenar por timepo");
@@ -16,7 +18,9 @@ public class Main {
             System.out.println("4-Mostrar lista de pedidos");
             System.out.println("5-Agregar pedido");
             System.out.println("6-Eliminar pedido");
-            System.out.println("7-Salir del sistema");
+            System.out.println("7-Agregar el pedido en una cola");
+            System.out.println("8-Agregar el pedido terminado en una pila");
+            System.out.println("9-Salir del sistema");
             op=consola.nextInt();
             switch (op) {
                 case 1:
@@ -39,8 +43,15 @@ public class Main {
                 case 6: 
                     pizzeria.eliminarPedido(pedido);
                     break;
+                case 7: 
+                    
+                    break;
+                case 8: 
+                   
+                    break;
 
             }
-        } while (op!=7);
+        } while (op!=9);
     }
 }
+*/
