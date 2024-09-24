@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        PilasArreglo stack = new PilasArreglo();
+        StackList stack = new StackList();
         stack.push(10);
         stack.push(20);
         stack.push(30);
@@ -12,5 +12,6 @@ public class Main {
         System.out.println("-----------------------------");
         stack.mostrarPila();
         
+
     }
 }
