@@ -38,7 +38,7 @@ public class QueueList {
     }
     //preguntar si la cola esta vacia
     public boolean isEmpty(){
-        return front==null && back == null;
+        return front==null && back == null; //front==back
     }
     //hacer vacia la cola
     public void makeEmpty(){
