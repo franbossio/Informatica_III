@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Arbol arbol = new Arbol();
+       /* Arbol arbol = new Arbol();
         arbol.agregar(43);
         arbol.agregar(10);
         arbol.agregar(8);
@@ -11,6 +11,14 @@ public class Main {
         System.out.println("\nPostorden: ");
         arbol.dispararPostorden();
         System.out.println("\nPreorden: ");
-        arbol.dispararPreorden();
+        arbol.dispararPreorden();*/
+        ArbolAVL arbolAVL = new ArbolAVL();
+        arbolAVL.insertar(10);
+        arbolAVL.insertar(5);
+        arbolAVL.insertar(13);
+        arbolAVL.insertar(1);
+        arbolAVL.insertar(6);
+        arbolAVL.insertar(17);
+        arbolAVL.preorden(ArbolAVL.getRoot);
     }
 }
