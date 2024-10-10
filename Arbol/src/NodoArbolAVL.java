@@ -1,13 +1,9 @@
 public class NodoArbolAVL {
-    public int dato;
-    public int fe;
-    public NodoArbolAVL izq;
-    public NodoArbolAVL der;
+    int clave, altura;
+    NodoArbolAVL izquierdo, derecho;
 
-    public NodoArbolAVL(int dato){
-        this.dato=dato;
-        izq=null;
-        der=null;
-        fe=0;
+    public NodoArbolAVL(int clave) {
+        this.clave = clave;
+        this.altura = 1;  // Los nodos recién creados tienen altura 1
     }
 }
