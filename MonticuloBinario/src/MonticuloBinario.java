@@ -68,7 +68,7 @@ public class MonticuloBinario {
         if(isEmpty()){
             throw new NoSuchElementException();
         }else{
-            for (int i=1;i<currentSize;i++) {
+            for (int i=1;i<currentSize+1;i++) {
                 System.err.println(array[i]);
             }
         }
