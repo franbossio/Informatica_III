@@ -1,156 +1,79 @@
 public class ArbolAVL {
-    private NodoArbolAVL raiz;
+    private NodoArbolAVL root;
 
-    // Método para insertar un nodo
-    public void insertar(int clave) {
-        raiz = insertarRec(raiz, clave);
+    public ArbolAVL(){
+        root=null;
     }
 
-    private NodoArbolAVL insertarRec(NodoArbolAVL nodo, int clave) {
-        // Inserción normal en árbol binario de búsqueda
-        if (nodo == null)
-            return new NodoArbolAVL(clave);
-
-        if (clave < nodo.clave)
-            nodo.izquierdo = insertarRec(nodo.izquierdo, clave);
-        else if (clave > nodo.clave)
-            nodo.derecho = insertarRec(nodo.derecho, clave);
-        else
-            return nodo;
-
-        // Actualizar la altura del nodo padre
-        nodo.altura = 1 + Math.max(altura(nodo.izquierdo), altura(nodo.derecho));
-
-        // Balancear el árbol
-        return balancear(nodo, clave);
+    //buscar un nodo
+    public NodoArbolAVL buscar(int d, NodoArbolAVL r){
+        if(root==null){
+            return null;
+        }else if(r.dato==d){
+            return r;
+        }else if(d>r.dato){
+            return buscar(d, r.der);
+        }else{
+            return buscar(d,r.izq);
+        }
     }
 
-    // Método para eliminar un nodo
-    public void eliminar(int clave) {
-        raiz = eliminarRec(raiz, clave);
+    //obtener factor de equilibrio
+    public int obtenerFE(NodoArbolAVL r){
+        if(r==null){
+            return -1;
+        }else{
+            return r.fe;
+        }
     }
 
-    private NodoArbolAVL eliminarRec(NodoArbolAVL nodo, int clave) {
-        if (nodo == null)
-            return nodo;
+    //rotacion simple izquierda
+    public NodoArbolAVL RSI(NodoArbolAVL r){
+        NodoArbolAVL aux = r.izq;
+        r.izq=aux.der;
+        aux.der=r;
+        r.fe=Math.max(obtenerFE(r.izq), obtenerFE(r.der))+1;
+        aux.fe=Math.max(obtenerFE(aux.izq), obtenerFE(aux.der))+1;
+        return aux;
+    }
 
-        if (clave < nodo.clave)
-            nodo.izquierdo = eliminarRec(nodo.izquierdo, clave);
-        else if (clave > nodo.clave)
-            nodo.derecho = eliminarRec(nodo.derecho, clave);
-        else {
-            if ((nodo.izquierdo == null) || (nodo.derecho == null)) {
-                NodoArbolAVL temp = null;
-                if (temp == nodo.izquierdo)
-                    temp = nodo.derecho;
-                else
-                    temp = nodo.izquierdo;
+    //rotacion simple derecha
+    public NodoArbolAVL RSD(NodoArbolAVL r){
+        NodoArbolAVL aux = r.der;
+        r.der=aux.izq;
+        aux.izq=r;
+        r.fe=Math.max(obtenerFE(r.izq), obtenerFE(r.der))+1;
+        aux.fe=Math.max(obtenerFE(aux.izq), obtenerFE(aux.der))+1;
+        return aux;
+    }
 
-                if (temp == null) {
-                    temp = nodo;
-                    nodo = null;
-                } else
-                    nodo = temp;
-            } else {
-                NodoArbolAVL temp = nodoConClaveMinima(nodo.derecho);
-                nodo.clave = temp.clave;
-                nodo.derecho = eliminarRec(nodo.derecho, temp.clave);
+    //rotacion doble izquierda
+    public NodoArbolAVL RDI(NodoArbolAVL r){
+        NodoArbolAVL aux;
+        r.izq=RSD(r.izq);
+        aux=RSI(r);
+        return aux;
+    }   
+
+    //rotacion doble derecha
+    public NodoArbolAVL RDD(NodoArbolAVL r){
+        NodoArbolAVL aux;
+        r.der=RSI(r.der);
+        aux=RSD(r);
+        return aux;
+    }   
+
+    //insertar avl
+    public NodoArbolAVL insertar(NodoArbolAVL nuevo, NodoArbolAVL subAr){
+        NodoArbolAVL nuevoPadre=subAr;
+        if(nuevo.dato<subAr.dato){
+            if(subAr.izq==null){
+                subAr.izq=nuevo;
+            }else{
+                subAr.izq=insertar(nuevo, subAr.izq);
+                if(ObtenerFE(subAr.izq))
             }
-        }
-
-        if (nodo == null)
-            return nodo;
-
-        // Actualizar la altura del nodo
-        nodo.altura = Math.max(altura(nodo.izquierdo), altura(nodo.derecho)) + 1;
-
-        // Balancear el árbol
-        return balancear(nodo, clave);
-    }
-
-    // Método para encontrar el nodo con el valor mínimo
-    private NodoArbolAVL nodoConClaveMinima(NodoArbolAVL nodo) {
-        NodoArbolAVL actual = nodo;
-        while (actual.izquierdo != null)
-            actual = actual.izquierdo;
-        return actual;
-    }
-
-    // Método para balancear el árbol
-    private NodoArbolAVL balancear(NodoArbolAVL nodo, int clave) {
-        int balance = obtenerBalance(nodo);
-
-        if (balance > 1 && clave < nodo.izquierdo.clave)
-            return rotacionDerecha(nodo);
-
-        if (balance < -1 && clave > nodo.derecho.clave)
-            return rotacionIzquierda(nodo);
-
-        if (balance > 1 && clave > nodo.izquierdo.clave) {
-            nodo.izquierdo = rotacionIzquierda(nodo.izquierdo);
-            return rotacionDerecha(nodo);
-        }
-
-        if (balance < -1 && clave < nodo.derecho.clave) {
-            nodo.derecho = rotacionDerecha(nodo.derecho);
-            return rotacionIzquierda(nodo);
-        }
-
-        return nodo;
-    }
-
-    // Rotación simple a la derecha
-    private NodoArbolAVL rotacionDerecha(NodoArbolAVL y) {
-        NodoArbolAVL x = y.izquierdo;
-        NodoArbolAVL T2 = x.derecho;
-
-        x.derecho = y;
-        y.izquierdo = T2;
-
-        y.altura = Math.max(altura(y.izquierdo), altura(y.derecho)) + 1;
-        x.altura = Math.max(altura(x.izquierdo), altura(x.derecho)) + 1;
-
-        return x;
-    }
-
-    // Rotación simple a la izquierda
-    private NodoArbolAVL rotacionIzquierda(NodoArbolAVL x) {
-        NodoArbolAVL y = x.derecho;
-        NodoArbolAVL T2 = y.izquierdo;
-
-        y.izquierdo = x;
-        x.derecho = T2;
-
-        x.altura = Math.max(altura(x.izquierdo), altura(x.derecho)) + 1;
-        y.altura = Math.max(altura(y.izquierdo), altura(y.derecho)) + 1;
-
-        return y;
-    }
-
-    // Obtener el balance de un nodo
-    private int obtenerBalance(NodoArbolAVL nodo) {
-        if (nodo == null)
-            return 0;
-        return altura(nodo.izquierdo) - altura(nodo.derecho);
-    }
-
-    // Obtener la altura de un nodo
-    private int altura(NodoArbolAVL nodo) {
-        if (nodo == null)
-            return 0;
-        return nodo.altura;
-    }
-
-    // Método para imprimir el árbol en orden
-    public void inOrden() {
-        inOrdenRec(raiz);
-    }
-
-    private void inOrdenRec(NodoArbolAVL nodo) {
-        if (nodo != null) {
-            inOrdenRec(nodo.izquierdo);
-            System.out.print(nodo.clave + " ");
-            inOrdenRec(nodo.derecho);
         }
     }
 }
+
