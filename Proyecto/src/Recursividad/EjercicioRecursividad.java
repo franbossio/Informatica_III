@@ -65,9 +65,9 @@ public class EjercicioRecursividad {
                     break;
                 case 7:
                     System.out.println("--------Seleccionaste Binario(contar unos)--------");
-                    System.out.println("Ingrese un numero binario:");
+                    System.out.println("Ingrese un numero:");
                     x=consola.nextInt();
-                    System.out.println("La cantidad de unos son: "+r.contarUnos(x));
+                    System.out.println("La cantidad de unos en codigo binario son: "+r.contarUnos(x));
                     break;
                 case 8:
                     System.out.println("Adios");

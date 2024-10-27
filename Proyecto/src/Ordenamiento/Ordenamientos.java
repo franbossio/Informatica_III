@@ -1,5 +1,7 @@
 package Ordenamiento;
 
+import java.util.*;
+
 public class Ordenamientos {
 
     //ordeanr tipo entero
@@ -31,8 +33,6 @@ public class Ordenamientos {
                 swap=a[i];
                 a[i]=a[j];
                 a[j]=swap;
-                /*imprimimos el nuevo arreglo despues del intercambio */
-                imprimirArreglo(a);
             }
         }
         a[izq]=a[j];
@@ -74,8 +74,6 @@ public class Ordenamientos {
                 swap=a[i];
                 a[i]=a[j];
                 a[j]=swap;
-                /*imprimimos el nuevo arreglo despues del intercambio */
-                imprimirArregloDouble(a);
             }
         }
         a[izq]=a[j];
@@ -117,8 +115,6 @@ public class Ordenamientos {
                 swap=a[i];
                 a[i]=a[j];
                 a[j]=swap;
-                /*imprimimos el nuevo arreglo despues del intercambio */
-                imprimirArregloChar(a);
             }
         }
         a[izq]=a[j];
@@ -264,5 +260,18 @@ public class Ordenamientos {
         }
 
     }
+
+    //ingresar valores aleatorios a un arreglo
+    public int[] valoresAleatorio(int size){
+        int[] array = new int[size]; // Crear array con la longitud indicada
+        Random random = new Random(); // Objeto Random para generar números aleatorios
+
+        for (int i = 0; i < size; i++) {
+            array[i] = random.nextInt(100); // Genera un número aleatorio entre 0 y 99
+        }
+
+        return array; // Retorna el array cargado con números aleatorios
+    }
+    
     
 }

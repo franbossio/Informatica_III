@@ -22,13 +22,6 @@ public class Recursividad {
         }
         return fibonacci(x-1)+fibonacci(x-2);
     }
-
-    public String invertir(String cadena){
-        if (cadena.isEmpty()) {
-            return cadena;
-        }
-        return invertir(cadena.substring(1))+cadena.charAt(0);
-    }
     
     public int potencia(int a,int b){
         if (b==0) {

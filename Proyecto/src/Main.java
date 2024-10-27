@@ -28,6 +28,7 @@ public class Main {
                     break;
                 case 7:
                     System.out.println("Adios");
+                    break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
