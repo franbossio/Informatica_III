@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import MonticuloBinario.EjercicioMonticuloBinario;
 import Ordenamiento.EjercicioOrdenamiento;
 import Recursividad.EjercicioRecursividad;
 
@@ -7,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         EjercicioRecursividad ejercicioRecursividad = new EjercicioRecursividad();
         EjercicioOrdenamiento ejercicioOrdenamiento = new EjercicioOrdenamiento();
+        EjercicioMonticuloBinario ejercicioMonticuloBinario = new EjercicioMonticuloBinario();
         int op;
         do{
             System.out.println("--------Menu Principal--------");
@@ -29,14 +31,29 @@ public class Main {
                 case 2:
                     ejercicioOrdenamiento.ejercutar();
                     break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
                 case 7:
+                    break;
+                case 8:
+                    ejercicioMonticuloBinario.ejecutar();
+                    break;
+                case 9:
+                    break;
+                case 10:
                     System.out.println("Adios");
                     break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
             }
-        }while(op!=7);
+        }while(op!=10);
         
     }
 }

@@ -2,10 +2,11 @@ package PilasColasconListas;
 import java.util.*;
 public class EjercicioPilasColasconLista {
 
-   public void ejecutar(){
     Pila p = new Pila();
     Scanner consola = new Scanner(System.in);
     int op, x, op2;
+
+   public void ejecutar(){
     do{
         System.out.println("--------Pilas y colas con listas--------");
         System.out.println("Elegir el ejercicio: ");
@@ -18,29 +19,7 @@ public class EjercicioPilasColasconLista {
         switch (op) {
             case 1:
             System.out.println("----------Elegiste el 1° ejercicio----------");
-                System.out.println("Ingresa una opcion:");
-                System.out.println("1-Agregar elementos");
-                System.out.println("2-Eliminar elemento");
-                System.out.println("3-Mostrar el top");
-                System.out.println("4-Mostrar pila");
-                op2=consola.nextInt();
-                switch (op2) {
-                    case 1:
-                        System.out.println("Ingresa el elemento para agregar:");
-                        x=consola.nextInt();
-                        p.push(x);
-                        break;
-                    case 2:
-                        p.pop();
-                        System.out.println("Elemento eliminado correctamente");
-                        break;
-                    case 3:
-                        System.out.println("El top es: "+p.top());
-                        break;
-                    case 4:
-                        p.mostrarPila();
-                        break;
-                }
+                ejercicio1();
                 break;
             case 2:
                 System.out.println("----------Elegiste el 2° ejercicio----------");
@@ -64,6 +43,34 @@ public class EjercicioPilasColasconLista {
     }while(op!=5);
     
 }
-   
+   private void ejercicio1(){
+    do {
+        System.out.println("Ingresa una opcion:");
+        System.out.println("1-Agregar elementos");
+        System.out.println("2-Eliminar elemento");
+        System.out.println("3-Mostrar el top");
+        System.out.println("4-Mostrar pila");
+        System.out.println("5-Salir");
+        op2=consola.nextInt();
+        switch (op2) {
+            case 1:
+                System.out.println("Ingresa el elemento para agregar:");
+                x=consola.nextInt();
+                p.push(x);
+                break;
+            case 2:
+                p.pop();
+                System.out.println("Elemento eliminado correctamente");
+                break;
+            case 3:
+                System.out.println("El top es: "+p.top());
+                break;
+            case 4:
+                p.mostrarPila();
+                break;
+        }
+    } while (op2!=5);
+       
+   }
     
 }
