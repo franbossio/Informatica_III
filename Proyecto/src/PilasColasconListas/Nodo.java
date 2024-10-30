@@ -8,4 +8,5 @@ public class Nodo {
         this.dato=dato;
         this.next=null;
     }
+
 }

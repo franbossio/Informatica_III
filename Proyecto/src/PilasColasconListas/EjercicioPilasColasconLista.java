@@ -5,14 +5,15 @@ public class EjercicioPilasColasconLista {
     Pila p = new Pila();
     Scanner consola = new Scanner(System.in);
     int op, x, op2;
+    String ecuacion;
 
    public void ejecutar(){
     do{
         System.out.println("--------Pilas y colas con listas--------");
         System.out.println("Elegir el ejercicio: ");
         System.out.println("1-Implementación de una Pila con lista");
-        System.out.println("2-");
-        System.out.println("3-");
+        System.out.println("2-Implementa una pila que almacene palabras. Luego, desapílalas e imprímelas en orden inverso.");
+        System.out.println("3-Verificacion de parentesis");
         System.out.println("4-");
         System.out.println("5-Salir");
         op = consola.nextInt();
@@ -23,11 +24,11 @@ public class EjercicioPilasColasconLista {
                 break;
             case 2:
                 System.out.println("----------Elegiste el 2° ejercicio----------");
-                
+                ejercicio2();
                 break;
             case 3:
                 System.out.println("----------Elegiste el 3° ejercicio----------");
-               
+                ejercicio3();
                 break;
             case 4:
                 System.out.println("----------Elegiste el 4° ejercicio----------");
@@ -72,5 +73,39 @@ public class EjercicioPilasColasconLista {
     } while (op2!=5);
        
    }
-    
+    private void ejercicio2(){
+        System.out.println("Ingrese palabras para apilar. Escriba 'fin' para terminar:");
+        while (true) {
+            String palabra = consola.nextLine();
+            if (palabra.equalsIgnoreCase("fin")) {
+                break;
+            }
+            p.push(palabra); 
+        }
+        
+        // Desapilar y mostrar las palabras en orden inverso
+        System.out.println("\nPalabras en orden inverso:");
+        while (!p.isEmptyString()) {
+            System.out.println(p.topAndPop2()); // Desapilar y mostrar cada palabra
+        }
+    }
+
+    private void ejercicio3(){
+        System.out.println("Ingresa la ecucacion: ");
+        ecuacion=consola.nextLine();
+        
+
+        for(int i=0;i<ecuacion.length();i++){
+            if(ecuacion.charAt(i)=='('){
+                p.push("(");;
+            }else if(ecuacion.charAt(i)==')'){
+                p.popString();
+            }
+        }
+        if(p.isEmptyString()){
+            System.out.println("Parentesis balanceados");
+        }else{
+            System.out.println("Parentesis desbalanceados");
+        }
+    }
 }

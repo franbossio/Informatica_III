@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 import MonticuloBinario.EjercicioMonticuloBinario;
 import Ordenamiento.EjercicioOrdenamiento;
+import PilasColasconListas.EjercicioPilasColasconLista;
 import Recursividad.EjercicioRecursividad;
 
 public class Main {
     public static void main(String[] args) {
         EjercicioRecursividad ejercicioRecursividad = new EjercicioRecursividad();
         EjercicioOrdenamiento ejercicioOrdenamiento = new EjercicioOrdenamiento();
+        EjercicioPilasColasconLista ejercicioPilasColasconLista = new EjercicioPilasColasconLista();
         EjercicioMonticuloBinario ejercicioMonticuloBinario = new EjercicioMonticuloBinario();
         int op;
         do{
@@ -34,6 +36,7 @@ public class Main {
                 case 3:
                     break;
                 case 4:
+                    ejercicioPilasColasconLista.ejecutar();
                     break;
                 case 5:
                     break;
