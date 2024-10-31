@@ -246,6 +246,7 @@ public class EjercicioPilasColasconLista {
         Cola<Character> colaNormal = new Cola<>();
         Cola<Character> colaInversa = new Cola<>();
         System.out.println("Ingresa una palabra o frase:");
+        consola.nextLine();
         String palabra = consola.nextLine();
         // Normalizar la frase: convertir a minúsculas, quitar espacios y signos de puntuación
         palabra = palabra.toLowerCase().replaceAll("[^a-z0-9]", "");
@@ -256,10 +257,18 @@ public class EjercicioPilasColasconLista {
         }
         
         //ingresar cada letra pero con la palabra inversa
-        for(int i = palabra.length(); i < 0; i--){
+        for(int i = palabra.length()-1; i >= 0; i--){
             colaInversa.enqueue(palabra.charAt(i));
         }
 
+
+        while (!colaNormal.isEmpty()) {
+            // Si algún par de caracteres no coincide, no es un palíndromo
+            if (colaInversa.dequeue()!=colaInversa.dequeue()) {
+                System.out.println("La palabra o frase no es un palíndromo.");
+            }
+        }
+        System.out.println("La palabra o frase es un palíndromo.");
         
     }
 }
