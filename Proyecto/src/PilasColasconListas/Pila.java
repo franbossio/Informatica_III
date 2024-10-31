@@ -1,33 +1,20 @@
 package PilasColasconListas;
 
-public class Pila {
-    private Nodo topOfStack;
-    private Nodo2 tos;
+public class Pila<T> {
+    private Nodo<T> topOfStack;
 
     public Pila(){
-        topOfStack=null;
-        tos=null;
+        this.topOfStack=null;
     }
 
-    //ingresar dato de tipo string
-    public void push(String x){
-        Nodo2 new_Nodo = new Nodo2(x);
-        new_Nodo.next=tos;
-        tos=new_Nodo;
-    }
-
-    public void push(int x){
-        Nodo new_Nodo = new Nodo(x);
+    public void push(T x){
+        Nodo<T> new_Nodo = new Nodo<>(x);
         new_Nodo.next=topOfStack;
         topOfStack=new_Nodo;
     }
 
     public boolean isEmpty(){
         return topOfStack==null;
-    }
-
-    public boolean isEmptyString(){
-        return tos==null;
     }
 
     public void pop(){
@@ -38,16 +25,7 @@ public class Pila {
         }
     }
 
-    //eliminar un string
-    public void popString(){
-        if(isEmptyString()){
-            throw new UnderflowException("Stack empty");
-        }else{
-            tos=tos.next;
-        }
-    }
-
-   public int top(){
+   public T top(){
         if(isEmpty()){
             throw new UnderflowException("Stack empty");
         }else{
@@ -55,22 +33,12 @@ public class Pila {
         }
     }
 
-    public int topAndPop(){
+    public T topAndPop(){
         if(isEmpty()){
             throw new UnderflowException("Stack empty");
         }else{
-            int valor=topOfStack.dato;
+            T valor=topOfStack.dato;
             topOfStack=topOfStack.next;
-            return valor;
-        }
-    }
-
-    public String topAndPop2(){
-        if(isEmptyString()){
-            throw new UnderflowException("Stack empty");
-        }else{
-            String valor=tos.cadena;
-            tos=tos.next;
             return valor;
         }
     }
@@ -80,7 +48,7 @@ public class Pila {
     }
 
     public void mostrarPila(){
-        Nodo auxNodo=topOfStack;
+        Nodo<T> auxNodo=topOfStack;
         if(isEmpty()){
             throw new UnderflowException("Stack empty");
         }else{

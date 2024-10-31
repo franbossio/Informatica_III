@@ -1,10 +1,10 @@
 package PilasColasconListas;
 
-public class Nodo {
-    public int dato;
-    public Nodo next;
+public class Nodo<T>{
+    public T dato;
+    public Nodo<T> next;
 
-    public Nodo(int dato){
+    public Nodo(T dato){
         this.dato=dato;
         this.next=null;
     }

@@ -1,11 +1,12 @@
 package PilasColasconListas;
 import java.util.*;
+
 public class EjercicioPilasColasconLista {
 
-    Pila p = new Pila();
+    Pila<Integer> pilaEntero = new Pila<>();
+    Pila<String> pilaString = new Pila<>();
     Scanner consola = new Scanner(System.in);
     int op, x, op2;
-    String ecuacion;
 
    public void ejecutar(){
     do{
@@ -14,7 +15,7 @@ public class EjercicioPilasColasconLista {
         System.out.println("1-Implementación de una Pila con lista");
         System.out.println("2-Implementa una pila que almacene palabras. Luego, desapílalas e imprímelas en orden inverso.");
         System.out.println("3-Verificacion de parentesis");
-        System.out.println("4-");
+        System.out.println("4-Convertir decimal a binario");
         System.out.println("5-Salir");
         op = consola.nextInt();
         switch (op) {
@@ -32,7 +33,7 @@ public class EjercicioPilasColasconLista {
                 break;
             case 4:
                 System.out.println("----------Elegiste el 4° ejercicio----------");
-               
+                ejercicio4();
                 break;
             case 5:
                 System.out.println("Adios");
@@ -57,17 +58,17 @@ public class EjercicioPilasColasconLista {
             case 1:
                 System.out.println("Ingresa el elemento para agregar:");
                 x=consola.nextInt();
-                p.push(x);
+                pilaEntero.push(x);
                 break;
             case 2:
-                p.pop();
+                pilaEntero.pop();
                 System.out.println("Elemento eliminado correctamente");
                 break;
             case 3:
-                System.out.println("El top es: "+p.top());
+                System.out.println("El top es: "+pilaEntero.top());
                 break;
             case 4:
-                p.mostrarPila();
+                pilaEntero.mostrarPila();
                 break;
         }
     } while (op2!=5);
@@ -80,32 +81,54 @@ public class EjercicioPilasColasconLista {
             if (palabra.equalsIgnoreCase("fin")) {
                 break;
             }
-            p.push(palabra); 
+            pilaString.push(palabra); 
         }
         
         // Desapilar y mostrar las palabras en orden inverso
         System.out.println("\nPalabras en orden inverso:");
-        while (!p.isEmptyString()) {
-            System.out.println(p.topAndPop2()); // Desapilar y mostrar cada palabra
+        while (!pilaString.isEmpty()) {
+            System.out.println(pilaString.topAndPop()); // Desapilar y mostrar cada palabra
         }
     }
 
     private void ejercicio3(){
         System.out.println("Ingresa la ecucacion: ");
-        ecuacion=consola.nextLine();
-        
-
+        consola.nextLine();
+        String ecuacion = consola.nextLine();
         for(int i=0;i<ecuacion.length();i++){
             if(ecuacion.charAt(i)=='('){
-                p.push("(");;
+                pilaString.push("(");;
             }else if(ecuacion.charAt(i)==')'){
-                p.popString();
+                pilaString.pop();
             }
         }
-        if(p.isEmptyString()){
+        if(pilaString.isEmpty()){
             System.out.println("Parentesis balanceados");
         }else{
             System.out.println("Parentesis desbalanceados");
         }
     }
+
+    public void ejercicio4(){
+        System.out.print("Ingresa un número decimal: ");
+        int numeroDecimal = consola.nextInt();
+
+        if (numeroDecimal == 0) {
+            System.out.println("El número en binario es: 0");
+        } else {
+            // Algoritmo de división sucesiva por 2
+            while (numeroDecimal > 0) {
+                int residuo = numeroDecimal % 2; // Residuo al dividir por 2
+                pilaEntero.push(residuo);              // Apilamos el residuo
+                numeroDecimal /= 2;              // Actualizamos el número dividiéndolo por 2
+            }
+
+            System.out.print("El número en binario es: ");
+            // Desapilamos los elementos para formar el número binario
+            while (!pilaEntero.isEmpty()) {
+                System.out.print(pilaEntero.topAndPop()); // Mostramos el elemento en la cima y lo removemos
+            }
+            System.out.println();
+    }
+}
 }
