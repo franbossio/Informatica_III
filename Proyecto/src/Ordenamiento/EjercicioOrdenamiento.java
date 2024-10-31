@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class EjercicioOrdenamiento {
 
-    Ordenamientos o = new Ordenamientos();
+    Ordenamientos<Integer> ordenamientosDeEnteros = new Ordenamientos<>();
+    Ordenamientos<Character> ordenamientosDeCaracteres = new Ordenamientos<>();
+    Ordenamientos<Double> ordenamientosDeDouble = new Ordenamientos<>();
     Scanner consola = new Scanner(System.in);
 
     public void ejercutar(){
@@ -48,85 +50,85 @@ public class EjercicioOrdenamiento {
     }
     
     private void ejercicio1(){
-        int[] a ={5,10,1,20,3};
-        char[] b ={'a','t','b','v','c'};
-        double[] c ={5.52,10.215,1.235,20.987,3.3256};
+        Integer[] a ={5,10,1,20,3};
+        Character[] b ={'a','t','b','v','c'};
+        Double[] c ={5.52,10.215,1.235,20.987,3.3256};
         System.out.println("Arreglos antes de ordenar:");
-        o.imprimirArreglo(a);
-        o.imprimirArregloChar(b);
-        o.imprimirArregloDouble(c);
+        ordenamientosDeEnteros.imprimirArreglo(a);
+        ordenamientosDeDouble.imprimirArreglo(c);
+        ordenamientosDeCaracteres.imprimirArreglo(b);
         System.out.println("Despues de ordenar: ");
         System.out.println("Metodo de insercion: ");
-        o.insercion(a);
-        o.insercionChar(b);
-        o.insercionDouble(c);
-        o.imprimirArreglo(a);
-        o.imprimirArregloChar(b);
-        o.imprimirArregloDouble(c);
+        ordenamientosDeCaracteres.insercion(b);
+        ordenamientosDeDouble.insercion(c);
+        ordenamientosDeEnteros.insercion(a);
+        ordenamientosDeEnteros.imprimirArreglo(a);
+        ordenamientosDeDouble.imprimirArreglo(c);
+        ordenamientosDeCaracteres.imprimirArreglo(b);
         System.out.println("Metodo de shellsort: ");
-        o.shellSort(a);
-        o.shellSortChar(b);
-        o.shellSortDouble(c);
-        o.imprimirArreglo(a);
-        o.imprimirArregloChar(b);
-        o.imprimirArregloDouble(c);
+        ordenamientosDeEnteros.shellSort(a);
+        ordenamientosDeCaracteres.shellSort(b);
+        ordenamientosDeDouble.shellSort(c);
+        ordenamientosDeEnteros.imprimirArreglo(a);
+        ordenamientosDeDouble.imprimirArreglo(c);
+        ordenamientosDeCaracteres.imprimirArreglo(b);
         System.out.println("Metodo de quicksort: ");
-        o.quicksort(a, 0, a.length-1);
-        o.quicksortChar(b, 0, b.length-1);
-        o.quicksortDouble(c, 0, c.length-1);
-        o.imprimirArreglo(a);
-        o.imprimirArregloChar(b);
-        o.imprimirArregloDouble(c);
+        ordenamientosDeEnteros.quicksort(a, 0, a.length-1);
+        ordenamientosDeCaracteres.quicksort(b, 0, b.length-1);
+        ordenamientosDeDouble.quicksort(c, 0, c.length-1);
+        ordenamientosDeEnteros.imprimirArreglo(a);
+        ordenamientosDeDouble.imprimirArreglo(c);
+        ordenamientosDeCaracteres.imprimirArreglo(b);
     }
 
     private void ejercicio2(){
-        int[] array = new int[5];
+        Integer[] array = new Integer[5];
         System.out.println("Ingresa 5 numeros para tu arreglo:");
         for(int i=0;i<5;i++){
             array[i]=consola.nextInt();
         }
         System.out.println("Su arreglo es: ");
-        o.imprimirArreglo(array);
+        ordenamientosDeEnteros.imprimirArreglo(array);
     }
 
     private void ejercicio3(){
         System.out.println("Seleccione el tamaño del arreglo:");
         int size=consola.nextInt();
-        int[] v=o.valoresAleatorio(size);
+        Integer[] v=ordenamientosDeEnteros.valoresAleatorio(size);
         System.out.println("El arreglo es:\n");
-        o.imprimirArreglo(v);
+        ordenamientosDeEnteros.imprimirArreglo(v);
     }
 
     private void ejercicio4(){
-        int[] a1=o.valoresAleatorio(100);
-        int[] a2=o.valoresAleatorio(1000);
-        int[] a3=o.valoresAleatorio(10000);
+        Integer[] a1=ordenamientosDeEnteros.valoresAleatorio(100);
+        Integer[] a2=ordenamientosDeEnteros.valoresAleatorio(1000);
+        Integer[] a3=ordenamientosDeEnteros.valoresAleatorio(10000);
         long inicioQuick = System.nanoTime();
-        o.quicksort(a1, 0, a1.length-1);
+        ordenamientosDeEnteros.quicksort(a1, 0, a1.length-1);
         long finoQuick = System.nanoTime();
         long inicioShell = System.nanoTime();
-        o.shellSort(a1);
+        ordenamientosDeEnteros.shellSort(a1);
         long finoShell = System.nanoTime();
         long inicioInsercion = System.nanoTime();
-        o.insercion(a1);
+        ordenamientosDeEnteros.insercion(a1);
         long finoInsercion = System.nanoTime();
         long inicioQuick1 = System.nanoTime();
-        o.quicksort(a2, 0, a2.length-1);
+        ordenamientosDeEnteros.quicksort(a2, 0, a2.length-1);
         long finoQuick1 = System.nanoTime();
         long inicioShell1 = System.nanoTime();
-        o.shellSort(a2);
+        ordenamientosDeEnteros.shellSort(a2);
         long finoShell1 = System.nanoTime();
         long inicioInsercion1 = System.nanoTime();
-        o.insercion(a2);
+        ordenamientosDeEnteros.insercion(a2);
         long finoInsercion1 = System.nanoTime();
         long inicioQuick2 = System.nanoTime();
-        o.quicksort(a3, 0, a3.length-1);
+        ordenamientosDeEnteros.quicksort(a3, 0, a3.length-1);
         long finoQuick2 = System.nanoTime();
         long inicioShell2 = System.nanoTime();
-        o.shellSort(a3);
+        ordenamientosDeEnteros.shellSort(a3);
         long finoShell2 = System.nanoTime();
         long inicioInsercion2 = System.nanoTime();
-        o.insercion(a3);
+        ordenamientosDeEnteros.insercion(a3);
         long finoInsercion2 = System.nanoTime();
         System.out.println("100 elementos: ");
         System.out.println("Quicksort: "+(finoQuick-inicioQuick)+" nano segundos");

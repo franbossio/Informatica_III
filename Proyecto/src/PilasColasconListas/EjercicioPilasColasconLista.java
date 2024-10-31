@@ -52,7 +52,6 @@ public class EjercicioPilasColasconLista {
                 break;
             case 6:
                 System.out.println("----------Elegiste el 6° ejercicio----------");
-                colaEntero.makeEmpty();
                 ejercicio6();
                 break;
             case 7:
@@ -245,6 +244,7 @@ public class EjercicioPilasColasconLista {
     private void ejercicio8(){
         Cola<Character> colaNormal = new Cola<>();
         Cola<Character> colaInversa = new Cola<>();
+        boolean bandera = false;
         System.out.println("Ingresa una palabra o frase:");
         consola.nextLine();
         String palabra = consola.nextLine();
@@ -264,11 +264,17 @@ public class EjercicioPilasColasconLista {
 
         while (!colaNormal.isEmpty()) {
             // Si algún par de caracteres no coincide, no es un palíndromo
-            if (colaInversa.dequeue()!=colaInversa.dequeue()) {
-                System.out.println("La palabra o frase no es un palíndromo.");
+            if (!colaNormal.dequeue().equals(colaInversa.dequeue())) {
+                bandera=true;
             }
         }
-        System.out.println("La palabra o frase es un palíndromo.");
+
+        if(bandera){
+            System.out.println("La palabra o frase no es un palíndromo.");
+        }else{
+            System.out.println("La palabra o frase es un palíndromo.");
+        }
+        
         
     }
 }
