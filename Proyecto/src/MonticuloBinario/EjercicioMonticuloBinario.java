@@ -23,7 +23,7 @@ public class EjercicioMonticuloBinario {
                 case 1:
                     System.out.println("Ingresa el elemento para agregar:");
                     x=consola.nextInt();
-                    m.agregar(x);
+                    m.agrear(x);
                     break;
                 case 2:
                     System.out.println("Numero "+m.eliminar()+" eliminado");

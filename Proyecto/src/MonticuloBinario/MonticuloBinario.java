@@ -30,7 +30,7 @@ public class MonticuloBinario {
         if(currentSize + 1 == array.length ){
             doubleArray();
         }else{
-            int pos=currentSize+1;
+            int pos=++currentSize;
             for(;n<array[pos/2] && pos>=1; pos/=2){
                 array[pos]=array[pos/2];
             }
