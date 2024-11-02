@@ -30,7 +30,7 @@ public class MonticuloBinario {
         if(currentSize + 1 == array.length ){
             doubleArray();
         }else{
-            int pos=++currentSize;
+            int pos=currentSize++;
             for(;n<array[pos/2] && pos>=1; pos/=2){
                 array[pos]=array[pos/2];
             }
@@ -70,7 +70,7 @@ public class MonticuloBinario {
             throw new NoSuchElementException();
         }else{
             for (int i=1;i<currentSize+1;i++) {
-                System.err.println(array[i]);
+                System.out.println(array[i]);
             }
         }
         

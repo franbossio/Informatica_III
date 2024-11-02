@@ -26,7 +26,7 @@ public class EjercicioPilasColasconLista {
         op = consola.nextInt();
         switch (op) {
             case 1:
-            System.out.println("----------Elegiste el 1° ejercicio----------");
+                System.out.println("----------Elegiste el 1° ejercicio----------");
                 pilaEntero.makeEmpty();
                 ejercicio1();
                 break;

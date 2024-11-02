@@ -17,13 +17,14 @@ public class EjercicioMonticuloBinario {
             System.out.println("1-Insertar elementos");
             System.out.println("2-Eliminar el menor");
             System.out.println("3-Mostrar el menor");
-            System.out.println("4-Salir");
+            System.out.println("4-Imprimir el montiulo binario");
+            System.out.println("5-Salir");
             op=consola.nextInt();
             switch (op) {
                 case 1:
                     System.out.println("Ingresa el elemento para agregar:");
                     x=consola.nextInt();
-                    m.agrear(x);
+                    m.agregar(x);
                     break;
                 case 2:
                     System.out.println("Numero "+m.eliminar()+" eliminado");
@@ -32,10 +33,13 @@ public class EjercicioMonticuloBinario {
                     System.out.println("El Minimo es: "+m.buscar_minimo());
                     break;
                 case 4:
+                    m.imprimir();
+                    break;
+                case 5:
                     System.out.println("Adios");
                     break;
             }
-        } while (op!=4);
+        } while (op!=5);
            
     }
 
