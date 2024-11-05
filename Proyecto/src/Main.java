@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import ArbolBinario.EjercicioArbolBinario;
 import MonticuloBinario.EjercicioMonticuloBinario;
 import Ordenamiento.EjercicioOrdenamiento;
 import PilasColas.EjercicioPilasColas;
@@ -13,6 +14,7 @@ public class Main {
         EjercicioPilasColasconLista ejercicioPilasColasconLista = new EjercicioPilasColasconLista();
         EjercicioMonticuloBinario ejercicioMonticuloBinario = new EjercicioMonticuloBinario();
         EjercicioPilasColas ejercicioPilasColas = new EjercicioPilasColas();
+        EjercicioArbolBinario ejercicioArbolBinario = new EjercicioArbolBinario();
         int op;
         do{
             System.out.println("--------Menu Principal--------");
@@ -42,6 +44,7 @@ public class Main {
                     ejercicioPilasColasconLista.ejecutar();
                     break;
                 case 5:
+                    ejercicioArbolBinario.ejecutar();
                     break;
                 case 6:
                     break;
