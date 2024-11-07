@@ -10,7 +10,7 @@ public class EjercicioPilasColas {
     
     public void ejecutar(){
         do{
-            System.out.println("--------Pilas y colas con listas--------");
+            System.out.println("--------Pilas y colas--------");
             System.out.println("Elegir el ejercicio: ");
             System.out.println("1-Implementación de una Pila");
             System.out.println("2-Comprobación de Palíndromos");
@@ -174,29 +174,20 @@ public class EjercicioPilasColas {
             colaOriginal.enqueue(x);
         }
         
-        while (!colaOriginal.isEmpty()) {
-            int elementoActual = colaOriginal.dequeue();  // Desencola de la cola original
-            
-            // Mueve los elementos a la cola original para encontrar la posición correcta
-            while (!colaAuxiliar.isEmpty() && colaAuxiliar.mostrarFrente() < elementoActual) {
-                colaOriginal.enqueue(colaAuxiliar.dequeue());
-            }
-            
-            // Agrega el elemento en su posición en la cola auxiliar
-            colaAuxiliar.enqueue(elementoActual);
-            
-            // Devuelve los elementos desde colaOriginal a colaAuxiliar
-            while (!colaOriginal.isEmpty() && (colaAuxiliar.isEmpty() || colaOriginal.mostrarFrente() <= colaAuxiliar.mostrarFrente())) {
-                colaAuxiliar.enqueue(colaOriginal.dequeue());
-            }
-        }
-        
-        // Copia los elementos ordenados de la colaAuxiliar a la colaOriginal
-        while (!colaAuxiliar.isEmpty()) {
-            colaOriginal.enqueue(colaAuxiliar.dequeue());
-        }
+        System.out.println("Cola Original:");
+        colaOriginal.mostrarCola(); // Mostrar la cola original
 
-        System.out.println("Cola ordenada: ");
-        colaOriginal.mostrarCola();
+        // Transferir elementos de la cola original a la cola auxiliar
+        colaOriginal.transferir(colaAuxiliar);
+
+        // Ordenar la cola auxiliar
+        colaAuxiliar.shellsort();
+
+
+        // Transferir de la cola auxiliar de nuevo a la cola original
+        colaAuxiliar.transferir(colaOriginal);
+
+        System.out.println("Cola Original después de ordenar los datos de forma ascendente:");
+        colaOriginal.mostrarCola(); // Mostrar la cola original nuevamente
     }
 }

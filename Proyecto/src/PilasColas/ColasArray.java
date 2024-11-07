@@ -72,4 +72,25 @@ public class ColasArray {
     private void doubleArray(){
         array = (int []) new int[array.length*2];
     }
+
+    public void shellsort() {
+        int n = currentSize;
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < n; i++) {
+                int temp = array[front + i]; // Elemento a insertar
+                int j;
+                for (j = i; j >= gap && array[front + j - gap] > temp; j -= gap) {
+                    array[front + j] = array[front + j - gap];
+                }
+                array[front + j] = temp;
+            }
+        }
+    }
+
+    public void transferir(ColasArray otraCola) {
+        while (!this.isEmpty()) {
+            int elemento = this.dequeue();
+            otraCola.enqueue(elemento);
+        }
+    }
 }

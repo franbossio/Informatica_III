@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import ArbolBinario.EjercicioArbolBinario;
+import ArbolBinarioAVL.EjercicioArbolAVL;
 import MonticuloBinario.EjercicioMonticuloBinario;
 import Ordenamiento.EjercicioOrdenamiento;
 import PilasColas.EjercicioPilasColas;
@@ -15,6 +16,8 @@ public class Main {
         EjercicioMonticuloBinario ejercicioMonticuloBinario = new EjercicioMonticuloBinario();
         EjercicioPilasColas ejercicioPilasColas = new EjercicioPilasColas();
         EjercicioArbolBinario ejercicioArbolBinario = new EjercicioArbolBinario();
+        EjercicioArbolAVL ejercicioArbolAVL = new EjercicioArbolAVL();
+        
         int op;
         do{
             System.out.println("--------Menu Principal--------");
@@ -28,7 +31,8 @@ public class Main {
             System.out.println("7-Arbol Rojinegro");
             System.out.println("8-Monticulo Binario");
             System.out.println("9-Tabla Hash");
-            System.out.println("10-Salir");
+            System.out.println("10-General con librerías nativas de Java");
+            System.out.println("11-Salir");
             op = new Scanner(System.in).nextInt();
             switch (op) {
                 case 1:
@@ -47,6 +51,7 @@ public class Main {
                     ejercicioArbolBinario.ejecutar();
                     break;
                 case 6:
+                    ejercicioArbolAVL.ejecutar();
                     break;
                 case 7:
                     break;
@@ -55,14 +60,16 @@ public class Main {
                     break;
                 case 9:
                     break;
-                case 10:
+                case 10: 
+                    break;
+                case 11:
                     System.out.println("Adios");
                     break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
             }
-        }while(op!=10);
+        }while(op!=11);
         
     }
 }
