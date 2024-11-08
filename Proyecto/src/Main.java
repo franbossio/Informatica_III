@@ -2,15 +2,18 @@ import java.util.Scanner;
 
 import ArbolBinario.EjercicioArbolBinario;
 import ArbolBinarioAVL.EjercicioArbolAVL;
+import ArbolRojinegro.EjercicioRojinegro;
 import General.EjercicioGeneral;
 import MonticuloBinario.EjercicioMonticuloBinario;
 import Ordenamiento.EjercicioOrdenamiento;
 import PilasColas.EjercicioPilasColas;
 import PilasColasconListas.EjercicioPilasColasconLista;
 import Recursividad.EjercicioRecursividad;
+import TablaHash.EjercicioTablaHash;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner consola = new Scanner(System.in);
         EjercicioRecursividad ejercicioRecursividad = new EjercicioRecursividad();
         EjercicioOrdenamiento ejercicioOrdenamiento = new EjercicioOrdenamiento();
         EjercicioPilasColasconLista ejercicioPilasColasconLista = new EjercicioPilasColasconLista();
@@ -19,6 +22,8 @@ public class Main {
         EjercicioArbolBinario ejercicioArbolBinario = new EjercicioArbolBinario();
         EjercicioArbolAVL ejercicioArbolAVL = new EjercicioArbolAVL();
         EjercicioGeneral ejercicioGeneral = new EjercicioGeneral();
+        EjercicioTablaHash ejercicioTablaHash = new EjercicioTablaHash();
+        EjercicioRojinegro ejercicioRojinegro = new EjercicioRojinegro();
         
         int op;
         do{
@@ -35,7 +40,7 @@ public class Main {
             System.out.println("9-Tabla Hash");
             System.out.println("10-General con librerías nativas de Java");
             System.out.println("11-Salir");
-            op = new Scanner(System.in).nextInt();
+            op = consola.nextInt();
             switch (op) {
                 case 1:
                     ejercicioRecursividad.ejecutar();
@@ -56,11 +61,13 @@ public class Main {
                     ejercicioArbolAVL.ejecutar();
                     break;
                 case 7:
+                    ejercicioRojinegro.ejecutar();
                     break;
                 case 8:
                     ejercicioMonticuloBinario.ejecutar();
                     break;
                 case 9:
+                    ejercicioTablaHash.ejecutar();
                     break;
                 case 10: 
                     ejercicioGeneral.ejecutar();
@@ -73,6 +80,6 @@ public class Main {
                     break;
             }
         }while(op!=11);
-        
+        consola.close();
     }
 }

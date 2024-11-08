@@ -77,6 +77,6 @@ public class EjercicioRecursividad {
                     break;
             }
         }while(op!=8);
-        
+        consola.close();
     }
 }

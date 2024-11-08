@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class VentajasDesventajas {
 
         public void ejecutar(){
-            Scanner scanner = new Scanner(System.in);
+            Scanner consola = new Scanner(System.in);
         int opcion;
 
         do {
@@ -18,7 +18,7 @@ public class VentajasDesventajas {
             System.out.println("6. Salir");
 
             System.out.print("Ingrese su opción: ");
-            opcion = scanner.nextInt();
+            opcion = consola.nextInt();
 
             switch (opcion) {
                 case 1:
@@ -43,6 +43,7 @@ public class VentajasDesventajas {
                     System.out.println("Opción inválida. Por favor, inténtelo de nuevo.");
             }
         } while (opcion != 6);
+        consola.close();
         }
         
     

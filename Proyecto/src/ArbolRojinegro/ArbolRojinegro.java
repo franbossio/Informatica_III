@@ -1,7 +1,5 @@
 package ArbolRojinegro;
 
-import java.util.Scanner;
-
 // Clase Nodo del Árbol Rojinegro
 class Nodo {
     int dato;
