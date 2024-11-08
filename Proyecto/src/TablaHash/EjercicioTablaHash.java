@@ -19,6 +19,7 @@ public class EjercicioTablaHash {
             switch (op) {
                 case 1:
                     System.out.println("Ingresa la clave:");
+                    consola.nextLine();
                     String clave = consola.nextLine();
                     System.out.println("Ingresa el elemento:");
                     int x=consola.nextInt();
@@ -26,13 +27,15 @@ public class EjercicioTablaHash {
                     break;
                 case 2:
                     System.out.println("Ingresa la clave para eliminar el elemento:");
+                    consola.nextLine();
                     String eliminar = consola.nextLine();
                     tablaHash.eliminar(eliminar);
                     break;
                 case 3:
                     System.out.println("Ingresa la clave para buscar el elemento:");
+                    consola.nextLine();
                     String buscar = consola.nextLine();
-                    tablaHash.buscar(buscar);
+                    System.out.println("Su elemento es: "+tablaHash.buscar(buscar));
                     break;
                 case 4:
                     tablaHash.imprimir();
