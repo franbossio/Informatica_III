@@ -57,13 +57,21 @@ public class EjercicioRecursividad {
                     break;
                 case 6:
                     System.out.println("--------Seleccionaste Mostrar arreglo en orden inverso--------");
-                    int[] a = { 10, 20, 30, 40, 50 };
+                    int[] a;
+                    System.out.println("Ingresar el tamanio del arreglo:");
+                    int size = consola.nextInt();
+                    a = new int[size];
+                    System.out.println("Ingresar los elementos:");
+                    for (int i = 0; i < size; i++) {
+                        a[i] = consola.nextInt();
+                    }
                     System.out.println("Arreglo orininal:");
                     for (int i : a) {
                         System.out.println(i);
                     }
                     System.out.println("Arreglo inverso");
                     r.imprimirInverso(a, 0);
+                    System.out.println();
                     break;
                 case 7:
                     System.out.println("--------Seleccionaste Binario(contar unos)--------");
@@ -79,6 +87,5 @@ public class EjercicioRecursividad {
                     break;
             }
         } while (op != 8);
-        consola.close();
     }
 }

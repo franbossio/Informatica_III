@@ -24,9 +24,8 @@ public class Main {
         EjercicioGeneral ejercicioGeneral = new EjercicioGeneral();
         EjercicioTablaHash ejercicioTablaHash = new EjercicioTablaHash();
         EjercicioRojinegro ejercicioRojinegro = new EjercicioRojinegro();
-        
         int op;
-        do{
+        do {
             System.out.println("--------Menu Principal--------");
             System.out.println("Seleccionar el tema:");
             System.out.println("1-Recursividad");
@@ -69,7 +68,7 @@ public class Main {
                 case 9:
                     ejercicioTablaHash.ejecutar();
                     break;
-                case 10: 
+                case 10:
                     ejercicioGeneral.ejecutar();
                     break;
                 case 11:
@@ -79,7 +78,7 @@ public class Main {
                     System.out.println("Opcion no valida");
                     break;
             }
-        }while(op!=11);
+        } while (op != 11);
         consola.close();
     }
 }

@@ -20,21 +20,20 @@ public class ArbolBinario {
 
         if (valor < actual.valor) {
             actual.izquierdo = agregarRecursivo(actual.izquierdo, valor);
-        } 
-        else if(valor > actual.valor) {
+        } else if (valor > actual.valor) {
             actual.derecho = agregarRecursivo(actual.derecho, valor);
         }
 
         return actual;
     }
+
     public void buscar(int valor) {
-        boolean esta = buscarRecursivo(raiz, valor);
-        if (esta == false) {
+        boolean encontrado = buscarRecursivo(raiz, valor);
+        if (encontrado == false) {
             System.out.println("No se encontro el valor ingresado");
-        } 
-        else {
+        } else {
             eliminar(raiz, valor);
-        } 
+        }
     }
 
     // Metodo recursivo para buscar un valor
@@ -48,8 +47,8 @@ public class ArbolBinario {
         }
 
         return valor < actual.valor
-            ? buscarRecursivo(actual.izquierdo, valor) // Es verdadero?  
-            : buscarRecursivo(actual.derecho, valor); // Si lo de arriba es falso, procede
+                ? buscarRecursivo(actual.izquierdo, valor) // Es verdadero?
+                : buscarRecursivo(actual.derecho, valor); // Si lo de arriba es falso, procede
     }
 
     // Método para eliminar un nodo
@@ -62,17 +61,14 @@ public class ArbolBinario {
         // Recursivamente buscar el nodo a eliminar
         if (valor < nodo.valor) {
             nodo.izquierdo = eliminar(nodo.izquierdo, valor);
-        } 
-        else if (valor > nodo.valor) {
+        } else if (valor > nodo.valor) {
             nodo.derecho = eliminar(nodo.derecho, valor);
-        } 
-        else {
+        } else {
             // Nodo encontrado
             // Caso 1: Nodo con solo un hijo o sin hijo
             if (nodo.izquierdo == null) {
                 return nodo.derecho;
-            } 
-            else if (nodo.derecho == null) {
+            } else if (nodo.derecho == null) {
                 return nodo.izquierdo;
             }
 
@@ -113,9 +109,9 @@ public class ArbolBinario {
     public void PreOrden() {
         preOrdenRecursivo(raiz);
     }
-    
+
     private void preOrdenRecursivo(Nodo nodo) {
-        if (nodo!=null) {
+        if (nodo != null) {
             System.out.println(nodo.valor + " ");
             preOrdenRecursivo(nodo.izquierdo);
             preOrdenRecursivo(nodo.derecho);
@@ -138,23 +134,25 @@ public class ArbolBinario {
     public int depth() {
         return depthRecursivo(raiz);
     }
-    
+
     private int depthRecursivo(Nodo actual) {
         if (actual == null) {
-            return 0;  // Si no hay nodo, la profundidad es 0
+            return 0; // Si no hay nodo, la profundidad es 0
         } else {
             // Calcula la profundidad de los subárboles izquierdo y derecho
             int profundidadIzquierda = depthRecursivo(actual.izquierdo);
             int profundidadDerecha = depthRecursivo(actual.derecho);
-    
+
             // Devuelve la mayor profundidad + 1 (para el nodo actual)
-            return Math.max(profundidadIzquierda, profundidadDerecha) + 1; // Devuelve el valor maximo entre dos numeros + 1
+            return Math.max(profundidadIzquierda, profundidadDerecha) + 1; // Devuelve el valor maximo entre dos numeros
+                                                                           // + 1
         }
     }
 
     public void impArbol() {
         imprimirArbol(raiz, "");
     }
+
     private void imprimirArbol(Nodo nodo, String prefijo) {
         if (nodo != null) {
             System.out.println(prefijo + nodo.valor);
