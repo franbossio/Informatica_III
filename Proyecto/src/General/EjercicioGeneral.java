@@ -1,8 +1,10 @@
 package General;
+
 import java.util.*;
+
 public class EjercicioGeneral {
 
-    public void ejecutar(){
+    public void ejecutar() {
         ArrayList_A arrayList_A = new ArrayList_A();
         LinkedList_B linkedList_B = new LinkedList_B();
         HashMap_C hashMap_C = new HashMap_C();
@@ -11,7 +13,7 @@ public class EjercicioGeneral {
         VentajasDesventajas ventajasDesventajas = new VentajasDesventajas();
 
         int op;
-        do{
+        do {
             System.out.println("----------General con librerías nativas de Java----------");
             System.out.println("Elige una opcion:");
             System.out.println("1-ArrayList");
@@ -21,7 +23,7 @@ public class EjercicioGeneral {
             System.out.println("5-LinkedHashMap");
             System.out.println("6-Ventajas y desventajas");
             System.out.println("7-Salir");
-            op=new Scanner(System.in).nextInt();
+            op = new Scanner(System.in).nextInt();
             switch (op) {
                 case 1:
                     System.out.println("----------Elegiste ArrayList----------");
@@ -51,7 +53,7 @@ public class EjercicioGeneral {
                     System.out.println("Adios");
                     break;
             }
-        }while(op!=6);
+        } while (op != 7);
     }
-    
+
 }

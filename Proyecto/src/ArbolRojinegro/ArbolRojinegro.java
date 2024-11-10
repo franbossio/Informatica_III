@@ -23,54 +23,56 @@ public class ArbolRojinegro {
     public ArbolRojinegro() {
         raiz = null;
     }
+
     // Método para verificar si el árbol cumple con las propiedades rojinegras
-public boolean verificarPropiedadesRojinegras() {
-    if (raiz == null) {
-        return true; // Un árbol vacío es válido
-    }
-    // La raíz debe ser negra
-    if (raiz.esRojo) {
-        return false;
-    }
-    // Verifica propiedades del árbol rojinegro
-    return verificarPropiedades(raiz) && verificarAlturaNegra(raiz) != -1;
-}
-
-// Verifica que los hijos de nodos rojos sean negros
-private boolean verificarPropiedades(Nodo nodo) {
-    if (nodo == null) {
-        return true;
-    }
-
-    // Si el nodo es rojo, sus hijos deben ser negros
-    if (nodo.esRojo) {
-        if ((nodo.izquierdo != null && nodo.izquierdo.esRojo) || (nodo.derecho != null && nodo.derecho.esRojo)) {
+    public boolean verificarPropiedadesRojinegras() {
+        if (raiz == null) {
+            return true; // Un árbol vacío es válido
+        }
+        // La raíz debe ser negra
+        if (raiz.esRojo) {
             return false;
         }
+        // Verifica propiedades del árbol rojinegro
+        return verificarPropiedades(raiz) && verificarAlturaNegra(raiz) != -1;
     }
 
-    // Verifica recursivamente para los subárboles izquierdo y derecho
-    return verificarPropiedades(nodo.izquierdo) && verificarPropiedades(nodo.derecho);
-}
+    // Verifica que los hijos de nodos rojos sean negros
+    private boolean verificarPropiedades(Nodo nodo) {
+        if (nodo == null) {
+            return true;
+        }
 
-// Verifica que todos los caminos hasta las hojas tengan la misma cantidad de nodos negros
-private int verificarAlturaNegra(Nodo nodo) {
-    if (nodo == null) {
-        return 0; // Altura negra de un nodo nulo es 0
+        // Si el nodo es rojo, sus hijos deben ser negros
+        if (nodo.esRojo) {
+            if ((nodo.izquierdo != null && nodo.izquierdo.esRojo) || (nodo.derecho != null && nodo.derecho.esRojo)) {
+                return false;
+            }
+        }
+
+        // Verifica recursivamente para los subárboles izquierdo y derecho
+        return verificarPropiedades(nodo.izquierdo) && verificarPropiedades(nodo.derecho);
     }
 
-    int alturaIzquierda = verificarAlturaNegra(nodo.izquierdo);
-    int alturaDerecha = verificarAlturaNegra(nodo.derecho);
+    // Verifica que todos los caminos hasta las hojas tengan la misma cantidad de
+    // nodos negros
+    private int verificarAlturaNegra(Nodo nodo) {
+        if (nodo == null) {
+            return 0; // Altura negra de un nodo nulo es 0
+        }
 
-    // Si alguna de las sub-alturas es -1, significa que hay un error en la altura negra
-    if (alturaIzquierda == -1 || alturaDerecha == -1 || alturaIzquierda != alturaDerecha) {
-        return -1;
+        int alturaIzquierda = verificarAlturaNegra(nodo.izquierdo);
+        int alturaDerecha = verificarAlturaNegra(nodo.derecho);
+
+        // Si alguna de las sub-alturas es -1, significa que hay un error en la altura
+        // negra
+        if (alturaIzquierda == -1 || alturaDerecha == -1 || alturaIzquierda != alturaDerecha) {
+            return -1;
+        }
+
+        // Si el nodo es negro, incrementa la altura negra en 1
+        return alturaIzquierda + (nodo.esRojo ? 0 : 1);
     }
-
-    // Si el nodo es negro, incrementa la altura negra en 1
-    return alturaIzquierda + (nodo.esRojo ? 0 : 1);
-    }
-
 
     // Rotación hacia la izquierda
     private void rotarIzquierda(Nodo nodo) {
@@ -177,25 +179,30 @@ private int verificarAlturaNegra(Nodo nodo) {
         }
         raiz.esRojo = false; // La raíz siempre debe ser negra
     }
-     // Método modificado para mostrar el árbol con etiquetas de subárboles
+
+    // Método modificado para mostrar el árbol con etiquetas de subárboles
     public void mostrar(Nodo nodo, String indentacion, boolean esDerecho, boolean esRaiz) {
-    if (nodo != null) {
-        if (esRaiz) {
-            System.out.println(nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro) [Raíz]"));
-        } else if (esDerecho) {
-            System.out.println(indentacion + "+-- " + nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro)") + " [Subárbol Derecho]");
-        } else {
-            System.out.println(indentacion + "+-- " + nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro)") + " [Subárbol Izquierdo]");
+        if (nodo != null) {
+            if (esRaiz) {
+                System.out.println(nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro) [Raíz]"));
+            } else if (esDerecho) {
+                System.out.println(indentacion + "+-- " + nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro)")
+                        + " [Subárbol Derecho]");
+            } else {
+                System.out.println(indentacion + "+-- " + nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro)")
+                        + " [Subárbol Izquierdo]");
+            }
+            mostrar(nodo.izquierdo, indentacion + (esDerecho ? "    " : "|   "), false, false);
+            mostrar(nodo.derecho, indentacion + (esDerecho ? "    " : "|   "), true, false);
         }
-        mostrar(nodo.izquierdo, indentacion + (esDerecho ? "    " : "|   "), false, false);
-        mostrar(nodo.derecho, indentacion + (esDerecho ? "    " : "|   "), true, false);
     }
-    }
-     // Método para obtener la raíz del árbol
+
+    // Método para obtener la raíz del árbol
     public Nodo getRaiz() {
         return raiz;
     }
-     // Método para calcular la mayor altura negra del árbol
+
+    // Método para calcular la mayor altura negra del árbol
     public int calcularAlturaNegra() {
         return calcularAlturaNegra(raiz);
     }
@@ -219,5 +226,45 @@ private int verificarAlturaNegra(Nodo nodo) {
         }
 
         return alturaMaxima;
+    }
+
+    // Método para eliminar un nodo del árbol
+    public void eliminar(int dato) {
+        Nodo nodo = buscar(raiz, dato);
+        if (nodo == null) {
+            System.out.println("El nodo " + dato + " no se encuentra en el árbol.");
+            return;
+        }
+        eliminarNodo(nodo);
+    }
+
+    private Nodo buscar(Nodo nodo, int dato) {
+        if (nodo == null || nodo.dato == dato) {
+            return nodo;
+        }
+        if (dato < nodo.dato) {
+            return buscar(nodo.izquierdo, dato);
+        }
+        return buscar(nodo.derecho, dato);
+    }
+
+    private void eliminarNodo(Nodo nodo) {
+        // Lógica de eliminación y balanceo similar a la de inserción.
+        // Aquí necesitaríamos definir las rotaciones y ajustes de color según las
+        // reglas del árbol rojinegro.
+    }
+
+    // Método para imprimir el árbol en orden
+    public void imprimir() {
+        imprimirRecursivo(raiz, "", true);
+    }
+
+    private void imprimirRecursivo(Nodo nodo, String indentacion, boolean esDerecho) {
+        if (nodo != null) {
+            System.out.println(
+                    indentacion + (esDerecho ? "└── " : "├── ") + nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro)"));
+            imprimirRecursivo(nodo.izquierdo, indentacion + (esDerecho ? "    " : "│   "), false);
+            imprimirRecursivo(nodo.derecho, indentacion + (esDerecho ? "    " : "│   "), true);
+        }
     }
 }

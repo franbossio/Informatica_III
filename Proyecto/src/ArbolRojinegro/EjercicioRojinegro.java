@@ -33,10 +33,11 @@ public class EjercicioRojinegro {
                             case 2:
                                 System.out.println("Ingrese el elemento a eliminar:");
                                 int eliminar = consola.nextInt();
-
+                                arbolRojinegro.eliminar(eliminar);
+                                System.out.println("El elemento " + eliminar + ", fue eliminado correctamente");
                                 break;
                             case 3:
-
+                                arbolRojinegro.imprimir();
                                 break;
                             case 4:
                                 System.out.println("Adios");
