@@ -20,9 +20,8 @@ public class EjercicioRojinegro {
                     do {
                         System.out.println("Ingresa una opcion:");
                         System.out.println("1-Insertar elementos");
-                        System.out.println("2-Eliminar un elemento");
-                        System.out.println("3-Imprimir el arbol");
-                        System.out.println("4-Salir");
+                        System.out.println("2-Imprimir el arbol");
+                        System.out.println("3-Salir");
                         op = consola.nextInt();
                         switch (op) {
                             case 1:
@@ -31,24 +30,19 @@ public class EjercicioRojinegro {
                                 arbolRojinegro.insertar(x);
                                 break;
                             case 2:
-                                System.out.println("Ingrese el elemento a eliminar:");
-                                int eliminar = consola.nextInt();
-                                arbolRojinegro.eliminar(eliminar);
-                                System.out.println("El elemento " + eliminar + ", fue eliminado correctamente");
+                                arbolRojinegro.mostrar(arbolRojinegro.getRaiz(), "", true, true);
                                 break;
                             case 3:
-                                arbolRojinegro.imprimir();
-                                break;
-                            case 4:
                                 System.out.println("Adios");
                                 break;
                         }
-                    } while (op != 4);
+                    } while (op != 3);
                     break;
                 case 2:
                     System.out.println("----------Elegiste el 2° ejercicio----------");
-                    System.out.println("El arbol cumple con las propiedades rojinegras: "
+                    System.out.println("¿El arbol cumple con las propiedades rojinegras? "
                             + arbolRojinegro.verificarPropiedadesRojinegras());
+                    System.out.println("Su altura es: " + arbolRojinegro.calcularAlturaNegra());
                     break;
                 case 3:
                     System.out.println("Adios");

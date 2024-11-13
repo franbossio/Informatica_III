@@ -228,43 +228,4 @@ public class ArbolRojinegro {
         return alturaMaxima;
     }
 
-    // Método para eliminar un nodo del árbol
-    public void eliminar(int dato) {
-        Nodo nodo = buscar(raiz, dato);
-        if (nodo == null) {
-            System.out.println("El nodo " + dato + " no se encuentra en el árbol.");
-            return;
-        }
-        eliminarNodo(nodo);
-    }
-
-    private Nodo buscar(Nodo nodo, int dato) {
-        if (nodo == null || nodo.dato == dato) {
-            return nodo;
-        }
-        if (dato < nodo.dato) {
-            return buscar(nodo.izquierdo, dato);
-        }
-        return buscar(nodo.derecho, dato);
-    }
-
-    private void eliminarNodo(Nodo nodo) {
-        // Lógica de eliminación y balanceo similar a la de inserción.
-        // Aquí necesitaríamos definir las rotaciones y ajustes de color según las
-        // reglas del árbol rojinegro.
-    }
-
-    // Método para imprimir el árbol en orden
-    public void imprimir() {
-        imprimirRecursivo(raiz, "", true);
-    }
-
-    private void imprimirRecursivo(Nodo nodo, String indentacion, boolean esDerecho) {
-        if (nodo != null) {
-            System.out.println(
-                    indentacion + (esDerecho ? "└── " : "├── ") + nodo.dato + (nodo.esRojo ? " (Rojo)" : " (Negro)"));
-            imprimirRecursivo(nodo.izquierdo, indentacion + (esDerecho ? "    " : "│   "), false);
-            imprimirRecursivo(nodo.derecho, indentacion + (esDerecho ? "    " : "│   "), true);
-        }
-    }
 }
