@@ -5,34 +5,42 @@ import java.util.Scanner;
 
 public class HashMap3 {
     public void ejecutarHashMap() {
-        // Crear un HashMap
-        HashMap<String, Objeto> hashMap = new HashMap<>();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese la cantidad de objetos a agregar:");
-        int cantidadObjetos = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el salto de línea
-        // Ingresar elementos en el HashMap
-        for (int i = 1; i <= cantidadObjetos; i++) {
-            System.out.println("Ingrese el nombre del usuario" + i + ": ");
-            String nombre = scanner.nextLine();
-            System.out.println("Ingrese el número de telefono" + i + ": ");
-            int numero = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer de entrada
-            hashMap.put("telefono" + i, new Objeto(nombre, numero));
+        HashMap<String, Objeto> directorio = new HashMap<>();
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.print("Ingrese la cantidad de usuarios que desea registrar: ");
+        int cantidadUsuarios = entrada.nextInt();
+        entrada.nextLine(); // Limpieza del salto de línea
+
+        // Paso 1: Agregar usuarios al HashMap
+        for (int i = 1; i <= cantidadUsuarios; i++) {
+            System.out.print("Ingrese el nombre del usuario " + i + ": ");
+            String nombreUsuario = entrada.nextLine();
+            System.out.print("Ingrese el número telefónico del usuario " + i + ": ");
+            int numeroTelefono = entrada.nextInt();
+            entrada.nextLine(); // Limpieza del buffer de entrada
+            directorio.put("contacto" + i, new Objeto(nombreUsuario, numeroTelefono));
         }
 
-        // ii. Imprimir el HashMap completo
-        System.out.println("HashMap completo: " + hashMap);
+        // Paso 2: Imprimir el HashMap completo
+        System.out.println("Directorio completo: " + directorio);
 
-        // iii. Imprimir un elemento específico
-        System.out.println("Ingrese el telefono que desea ver: ");
-        String key = scanner.nextLine();
-        System.out.println(key + "= " + hashMap.get(key));
+        // Paso 3: Visualizar un usuario específico
+        System.out.print("Ingrese la clave del contacto que desea consultar: ");
+        String claveConsulta = entrada.nextLine();
+        if (directorio.containsKey(claveConsulta)) {
+            System.out.println(claveConsulta + " = " + directorio.get(claveConsulta));
+        } else {
+            System.out.println("No existe un contacto con esa clave.");
+        }
 
-        // iv. Borrar un elemento
-        System.out.println("Ingrese el telefono que desea eliminar: ");
-        key = scanner.nextLine();
-        hashMap.remove(key);
-        System.out.println("HashMap después de borrar '" + key + "': " + hashMap);
+        // Paso 4: Eliminar un usuario del directorio
+        System.out.print("Ingrese la clave del contacto que desea eliminar: ");
+        String claveEliminar = entrada.nextLine();
+        if (directorio.remove(claveEliminar) != null) {
+            System.out.println("Directorio después de eliminar '" + claveEliminar + "': " + directorio);
+        } else {
+            System.out.println("No se encontró un contacto con esa clave para eliminar.");
+        }
     }
 }

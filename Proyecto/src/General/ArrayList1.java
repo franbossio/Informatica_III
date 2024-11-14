@@ -4,40 +4,40 @@ import java.util.*;
 
 public class ArrayList1 {
     public void ejecutarArrayList() {
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Object> arrayList = new ArrayList<>();
+        Scanner entrada = new Scanner(System.in);
+        ArrayList<Object> listaObjetos = new ArrayList<>();
 
-        System.out.println("Ingrese la cantidad de objetos a agregar:");
-        int cantidadObjetos = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el salto de línea
+        System.out.println("Indique el número de elementos a añadir:");
+        int numObjetos = entrada.nextInt();
+        entrada.nextLine(); // Limpieza del salto de línea
 
-        // Ingresar los datos del usuario
-        for (int i = 0; i < cantidadObjetos; i++) {
-            System.out.println("Ingrese el nombre del objeto " + (i + 1) + ": ");
-            String nombre = scanner.nextLine();
+        // Entrada de datos del usuario
+        for (int i = 0; i < numObjetos; i++) {
+            System.out.println("Introduce el nombre del elemento " + (i + 1) + ": ");
+            String nombreElemento = entrada.nextLine();
 
-            System.out.println("Ingrese el precio del objeto " + (i + 1) + ": ");
-            int precio = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el salto de línea
+            System.out.println("Introduce el valor del elemento " + (i + 1) + ": ");
+            int valorElemento = entrada.nextInt();
+            entrada.nextLine(); // Limpieza del salto de línea
 
-            arrayList.add(new Objeto(nombre, precio));
+            listaObjetos.add(new Objeto(nombreElemento, valorElemento));
         }
 
-        // Imprimir la ArrayList completa
-        System.out.println("ArrayList completa: " + arrayList);
+        // Mostrar todos los elementos en la lista
+        System.out.println("Lista de elementos: " + listaObjetos);
 
-        // Imprimir un elemento específico
-        System.out.println("Ingrese el indice del elemento que desea ver:");
-        int objeto = scanner.nextInt();
-        System.out.println("Elemento en ese indice es: " + arrayList.get(objeto));
+        // Visualizar un elemento en un índice específico
+        System.out.println("Indica el índice del elemento a visualizar:");
+        int indiceElemento = entrada.nextInt();
+        System.out.println("El elemento en ese índice es: " + listaObjetos.get(indiceElemento));
 
-        // Borrar un elemento en el índice 1
-        System.out.println("Ingrese el indice del elemento a eliminar:");
-        int eliminar = scanner.nextInt();
-        arrayList.remove(eliminar);
-        System.out.println("ArrayList después de borrar el elemento en el indice queda: " + arrayList);
+        // Eliminar un elemento en el índice especificado
+        System.out.println("Indica el índice del elemento que quieres eliminar:");
+        int indiceEliminar = entrada.nextInt();
+        listaObjetos.remove(indiceEliminar);
+        System.out.println("Lista después de la eliminación: " + listaObjetos);
 
-        // Imprimir la ArrayList completa
-        System.out.println("ArrayList completa: " + arrayList);
+        // Mostrar la lista actualizada
+        System.out.println("Lista final: " + listaObjetos);
     }
 }

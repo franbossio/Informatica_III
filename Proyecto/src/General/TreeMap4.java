@@ -5,37 +5,43 @@ import java.util.TreeMap;
 
 public class TreeMap4 {
     public void ejecutarTreeMap() {
-        Scanner scanner = new Scanner(System.in);
-        TreeMap<String, Objeto> treeMap = new TreeMap<>();
+        Scanner entrada = new Scanner(System.in);
+        TreeMap<String, Objeto> inventarioVehiculos = new TreeMap<>();
 
-        System.out.println("Ingrese la cantidad de objetos a agregar:");
-        int cantidadObjetos = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el salto de línea
-        // Ingresar datos del usuario
-        for (int i = 1; i <= cantidadObjetos; i++) {
-            System.out.print("Ingrese el modelo del vehículo " + i + ": ");
-            String modelo = scanner.nextLine();
-            System.out.print("Ingrese el precio del vehículo " + i + ": ");
-            int precio = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
+        System.out.print("¿Cuántos vehículos desea registrar?: ");
+        int totalVehiculos = entrada.nextInt();
+        entrada.nextLine(); // Limpieza del salto de línea
 
-            treeMap.put("vehiculo" + i, new Objeto(modelo, precio));
+        // Paso 1: Agregar vehículos al TreeMap
+        for (int i = 1; i <= totalVehiculos; i++) {
+            System.out.print("Ingrese el modelo del vehículo #" + i + ": ");
+            String modeloVehiculo = entrada.nextLine();
+            System.out.print("Ingrese el precio del vehículo #" + i + ": ");
+            int precioVehiculo = entrada.nextInt();
+            entrada.nextLine(); // Limpieza del salto de línea
+
+            inventarioVehiculos.put("auto" + i, new Objeto(modeloVehiculo, precioVehiculo));
         }
 
-        System.out.println("TreeMap completo: " + treeMap);
+        System.out.println("\nInventario completo de vehículos: " + inventarioVehiculos);
 
-        // Obtener y mostrar un vehículo específico
-        System.out.print("Ingrese el nombre del vehículo a buscar: ");
-        String vehiculoBuscar = scanner.nextLine();
-        System.out.println("Vehículo " + vehiculoBuscar + ": " + treeMap.get(vehiculoBuscar));
+        // Paso 2: Buscar y mostrar un vehículo específico
+        System.out.print("\nIngrese la clave del vehículo que desea consultar: ");
+        String claveBusqueda = entrada.nextLine();
+        if (inventarioVehiculos.containsKey(claveBusqueda)) {
+            System.out.println("Vehículo encontrado: " + inventarioVehiculos.get(claveBusqueda));
+        } else {
+            System.out.println("No se encontró un vehículo con esa clave.");
+        }
 
-        // Eliminar un vehículo
-        System.out.print("Ingrese el nombre del vehículo a eliminar: ");
-        String vehiculoEliminar = scanner.nextLine();
-        treeMap.remove(vehiculoEliminar);
+        // Paso 3: Eliminar un vehículo
+        System.out.print("\nIngrese la clave del vehículo que desea eliminar: ");
+        String claveEliminar = entrada.nextLine();
+        if (inventarioVehiculos.remove(claveEliminar) != null) {
+            System.out.println("Inventario tras eliminar el vehículo " + claveEliminar + ": " + inventarioVehiculos);
+        } else {
+            System.out.println("No se encontró un vehículo con esa clave para eliminar.");
+        }
 
-        System.out.println("TreeMap después de borrar el vehículo " + vehiculoEliminar + ": " + treeMap);
-
-        scanner.close();
     }
 }

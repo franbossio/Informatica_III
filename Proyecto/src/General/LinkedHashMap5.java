@@ -5,41 +5,48 @@ import java.util.Scanner;
 
 public class LinkedHashMap5 {
     public void ejecutarLinkedHashMap() {
-        // Crear un LinkedHashMap
-        LinkedHashMap<String, Objeto> linkedHashMap = new LinkedHashMap<>();
-        Scanner scanner = new Scanner(System.in);
+        LinkedHashMap<String, Objeto> mapaObjetos = new LinkedHashMap<>();
+        Scanner entrada = new Scanner(System.in);
 
-        System.out.println("Ingrese la cantidad de objetos a agregar:");
-        int cantidadObjetos = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el salto de línea
-        // Solicitar datos al usuario
-        for (int i = 1; i <= cantidadObjetos; i++) {
-            System.out.print("Ingresa la clave para el objeto " + i + ": ");
-            String key = scanner.nextLine();
+        System.out.print("¿Cuántos objetos desea registrar?: ");
+        int totalObjetos = entrada.nextInt();
+        entrada.nextLine(); // Limpiar el salto de línea
 
-            System.out.print("Ingresa el nombre para el objeto " + i + ": ");
-            String name = scanner.nextLine();
+        // Paso 1: Solicitar información de cada objeto
+        for (int i = 1; i <= totalObjetos; i++) {
+            System.out.print("Ingrese la clave para el objeto #" + i + ": ");
+            String claveObjeto = entrada.nextLine();
 
-            System.out.print("Ingresa el valor para el objeto " + i + ": ");
-            int value = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            System.out.print("Ingrese el nombre del objeto #" + i + ": ");
+            String nombreObjeto = entrada.nextLine();
 
-            // Agregar el objeto al LinkedHashMap
-            linkedHashMap.put(key, new Objeto(name, value));
+            System.out.print("Ingrese el valor numérico para el objeto #" + i + ": ");
+            int valorObjeto = entrada.nextInt();
+            entrada.nextLine(); // Limpiar el buffer de entrada
+
+            // Añadir el objeto al LinkedHashMap
+            mapaObjetos.put(claveObjeto, new Objeto(nombreObjeto, valorObjeto));
         }
 
-        // Imprimir la LinkedHashMap completa
-        System.out.println("LinkedHashMap completa: " + linkedHashMap);
+        // Paso 2: Mostrar el LinkedHashMap completo
+        System.out.println("\nInventario completo de objetos: " + mapaObjetos);
 
-        // Imprimir un elemento específico
-        System.out.print("Ingresa la clave del elemento que quieres ver: ");
-        String searchKey = scanner.nextLine();
-        System.out.println("Elemento con clave '" + searchKey + "': " + linkedHashMap.get(searchKey));
+        // Paso 3: Consultar un objeto específico por su clave
+        System.out.print("\nIngrese la clave del objeto que desea consultar: ");
+        String claveConsulta = entrada.nextLine();
+        if (mapaObjetos.containsKey(claveConsulta)) {
+            System.out.println("Objeto encontrado: " + mapaObjetos.get(claveConsulta));
+        } else {
+            System.out.println("No existe un objeto con esa clave.");
+        }
 
-        // Borrar un elemento
-        System.out.print("Ingresa la clave del elemento que quieres borrar: ");
-        String removeKey = scanner.nextLine();
-        linkedHashMap.remove(removeKey);
-        System.out.println("LinkedHashMap después de borrar '" + removeKey + "': " + linkedHashMap);
+        // Paso 4: Eliminar un objeto por su clave
+        System.out.print("\nIngrese la clave del objeto que desea eliminar: ");
+        String claveEliminar = entrada.nextLine();
+        if (mapaObjetos.remove(claveEliminar) != null) {
+            System.out.println("Inventario tras eliminar '" + claveEliminar + "': " + mapaObjetos);
+        } else {
+            System.out.println("No se encontró un objeto con esa clave para eliminar.");
+        }
     }
 }

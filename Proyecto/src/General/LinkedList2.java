@@ -5,42 +5,47 @@ import java.util.Scanner;
 
 public class LinkedList2 {
 
-    public void ejecutarLinkedList_B() {
-        LinkedList<Objeto> linkedList = new LinkedList<>();
-        Scanner scanner = new Scanner(System.in);
+    public void ejecutarLinkedList() {
+        LinkedList<Objeto> listaBarrios = new LinkedList<>();
+        Scanner entradaUsuario = new Scanner(System.in);
 
-        // Pedir al usuario el número de elementos a agregar
-        System.out.print("Ingrese la cantidad de elementos que desea agregar: ");
-        int numElements = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el salto de línea
+        // Solicitar la cantidad de elementos al usuario
+        System.out.print("Especifique cuántos barrios desea añadir: ");
+        int totalElementos = entradaUsuario.nextInt();
+        entradaUsuario.nextLine(); // Limpieza del salto de línea
 
-        // i. Agregar objetos ingresados por el usuario
-        for (int i = 0; i < numElements; i++) {
-            System.out.print("Ingrese el nombre del barrio: ");
-            String name = scanner.nextLine();
-            System.out.print("Ingrese la direccion(numerica): ");
-            int value = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el salto de línea
-            linkedList.add(new Objeto(name, value));
+        // Paso 1: Añadir los objetos proporcionados por el usuario
+        for (int i = 0; i < totalElementos; i++) {
+            System.out.print("Introduzca el nombre del barrio: ");
+            String nombreBarrio = entradaUsuario.nextLine();
+            System.out.print("Introduzca el número de dirección: ");
+            int numeroDireccion = entradaUsuario.nextInt();
+            entradaUsuario.nextLine(); // Limpieza del salto de línea
+            listaBarrios.add(new Objeto(nombreBarrio, numeroDireccion));
         }
 
-        // ii. Imprimir la LinkedList completa
-        System.out.println("LinkedList completa: " + linkedList);
+        // Paso 2: Imprimir toda la LinkedList
+        System.out.println("Lista completa de barrios: " + listaBarrios);
 
-        // iii. Imprimir un elemento específico
-        System.out.println("Ingrese el indice del elemento que desea ver:");
-        int imprimir = scanner.nextInt();
-        if (!linkedList.isEmpty()) {
-            System.out.println("Elemento en ese indice es: " + linkedList.get(imprimir));
+        // Paso 3: Imprimir un elemento específico si existe
+        System.out.print("Ingrese el índice del barrio que desea visualizar: ");
+        int indiceVisualizar = entradaUsuario.nextInt();
+        if (!listaBarrios.isEmpty() && indiceVisualizar >= 0 && indiceVisualizar < listaBarrios.size()) {
+            System.out.println("Barrio en el índice especificado: " + listaBarrios.get(indiceVisualizar));
         } else {
-            System.out.println("La LinkedList está vacía.");
+            System.out.println("Índice fuera de rango o lista vacía.");
         }
 
-        // iv. Borrar un elemento si existen al menos 3 elementos
-        System.out.println("Ingrese el indice del elemento que desea eliminar:");
-        int cantidadObjetos = scanner.nextInt();
-        linkedList.remove(2);
-        System.out.println("LinkedList después de borrar el elemento en índice 2: " + linkedList);
+        // Paso 4: Borrar un elemento en el índice 2 si existen suficientes elementos
+        if (listaBarrios.size() >= 3) {
+            System.out.print("Ingrese el índice del barrio a eliminar: ");
+            int indiceEliminar = entradaUsuario.nextInt();
+            listaBarrios.remove(indiceEliminar);
+            System.out
+                    .println("Lista de barrios tras eliminación en el índice " + indiceEliminar + ": " + listaBarrios);
+        } else {
+            System.out.println("No hay suficientes barrios para eliminar en el índice 2.");
+        }
 
     }
 }
