@@ -5,11 +5,11 @@ import java.util.*;
 public class EjercicioGeneral {
 
     public void ejecutar() {
-        ArrayList_A arrayList_A = new ArrayList_A();
-        LinkedList_B linkedList_B = new LinkedList_B();
-        HashMap_C hashMap_C = new HashMap_C();
-        TreeMap_D treeMap_D = new TreeMap_D();
-        LinkedHashMap_E linkedHashMap_E = new LinkedHashMap_E();
+        ArrayList1 arrayList1 = new ArrayList1();
+        LinkedList2 linkedList2 = new LinkedList2();
+        HashMap3 hashMap3 = new HashMap3();
+        TreeMap4 treeMap4 = new TreeMap4();
+        LinkedHashMap5 linkedHashMap5 = new LinkedHashMap5();
         VentajasDesventajas ventajasDesventajas = new VentajasDesventajas();
 
         int op;
@@ -27,23 +27,23 @@ public class EjercicioGeneral {
             switch (op) {
                 case 1:
                     System.out.println("----------Elegiste ArrayList----------");
-                    arrayList_A.ejecutarArrayList();
+                    arrayList1.ejecutarArrayList();
                     break;
                 case 2:
                     System.out.println("----------Elegiste LinkedList----------");
-                    linkedList_B.ejecutarLinkedList_B();
+                    linkedList2.ejecutarLinkedList();
                     break;
                 case 3:
                     System.out.println("----------Elegiste HashMap----------");
-                    hashMap_C.ejecutarHashMap_C();
+                    hashMap3.ejecutarHashMap();
                     break;
                 case 4:
                     System.out.println("----------Elegiste TreeMap----------");
-                    treeMap_D.ejecutarTreeMap();
+                    treeMap4.ejecutarTreeMap();
                     break;
                 case 5:
                     System.out.println("----------Elegiste LinkedHashMap----------");
-                    linkedHashMap_E.ejecutarLinkedHashMap();
+                    linkedHashMap5.ejecutarLinkedHashMap();
                     break;
                 case 6:
                     System.out.println("----------Elegiste Ventajas y desventajas----------");

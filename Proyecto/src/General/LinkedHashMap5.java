@@ -3,10 +3,10 @@ package General;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-public class LinkedHashMap_E {
-    public void ejecutarLinkedHashMap(){
+public class LinkedHashMap5 {
+    public void ejecutarLinkedHashMap() {
         // Crear un LinkedHashMap
-        LinkedHashMap<String, MyObject> linkedHashMap = new LinkedHashMap<>();
+        LinkedHashMap<String, Objeto> linkedHashMap = new LinkedHashMap<>();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Ingrese la cantidad de objetos a agregar:");
@@ -22,10 +22,10 @@ public class LinkedHashMap_E {
 
             System.out.print("Ingresa el valor para el objeto " + i + ": ");
             int value = scanner.nextInt();
-            scanner.nextLine();  // Limpiar el buffer
+            scanner.nextLine(); // Limpiar el buffer
 
             // Agregar el objeto al LinkedHashMap
-            linkedHashMap.put(key, new MyObject(name, value));
+            linkedHashMap.put(key, new Objeto(name, value));
         }
 
         // Imprimir la LinkedHashMap completa

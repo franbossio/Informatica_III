@@ -1,12 +1,11 @@
 package General;
 
-
 import java.util.*;
 
-public class ArrayList_A {
-    public void ejecutarArrayList(){
+public class ArrayList1 {
+    public void ejecutarArrayList() {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<MyObject> arrayList = new ArrayList<>();
+        ArrayList<Object> arrayList = new ArrayList<>();
 
         System.out.println("Ingrese la cantidad de objetos a agregar:");
         int cantidadObjetos = scanner.nextInt();
@@ -21,7 +20,7 @@ public class ArrayList_A {
             int precio = scanner.nextInt();
             scanner.nextLine(); // Limpiar el salto de línea
 
-            arrayList.add(new MyObject(nombre, precio));
+            arrayList.add(new Objeto(nombre, precio));
         }
 
         // Imprimir la ArrayList completa
@@ -37,7 +36,7 @@ public class ArrayList_A {
         int eliminar = scanner.nextInt();
         arrayList.remove(eliminar);
         System.out.println("ArrayList después de borrar el elemento en el indice queda: " + arrayList);
-        
+
         // Imprimir la ArrayList completa
         System.out.println("ArrayList completa: " + arrayList);
     }

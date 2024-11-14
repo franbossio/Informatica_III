@@ -3,10 +3,10 @@ package General;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-public class TreeMap_D {
+public class TreeMap4 {
     public void ejecutarTreeMap() {
         Scanner scanner = new Scanner(System.in);
-        TreeMap<String, MyObject> treeMap = new TreeMap<>();
+        TreeMap<String, Objeto> treeMap = new TreeMap<>();
 
         System.out.println("Ingrese la cantidad de objetos a agregar:");
         int cantidadObjetos = scanner.nextInt();
@@ -19,7 +19,7 @@ public class TreeMap_D {
             int precio = scanner.nextInt();
             scanner.nextLine(); // Consumir el salto de línea
 
-            treeMap.put("vehiculo" + i, new MyObject(modelo, precio));
+            treeMap.put("vehiculo" + i, new Objeto(modelo, precio));
         }
 
         System.out.println("TreeMap completo: " + treeMap);

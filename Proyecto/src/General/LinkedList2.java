@@ -3,10 +3,10 @@ package General;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class LinkedList_B {
+public class LinkedList2 {
 
-    public void ejecutarLinkedList_B(){
-        LinkedList<MyObject> linkedList = new LinkedList<>();
+    public void ejecutarLinkedList_B() {
+        LinkedList<Objeto> linkedList = new LinkedList<>();
         Scanner scanner = new Scanner(System.in);
 
         // Pedir al usuario el número de elementos a agregar
@@ -21,7 +21,7 @@ public class LinkedList_B {
             System.out.print("Ingrese la direccion(numerica): ");
             int value = scanner.nextInt();
             scanner.nextLine(); // Limpiar el salto de línea
-            linkedList.add(new MyObject(name, value));
+            linkedList.add(new Objeto(name, value));
         }
 
         // ii. Imprimir la LinkedList completa
@@ -39,8 +39,8 @@ public class LinkedList_B {
         // iv. Borrar un elemento si existen al menos 3 elementos
         System.out.println("Ingrese el indice del elemento que desea eliminar:");
         int cantidadObjetos = scanner.nextInt();
-            linkedList.remove(2);
-            System.out.println("LinkedList después de borrar el elemento en índice 2: " + linkedList);
-        
+        linkedList.remove(2);
+        System.out.println("LinkedList después de borrar el elemento en índice 2: " + linkedList);
+
     }
 }

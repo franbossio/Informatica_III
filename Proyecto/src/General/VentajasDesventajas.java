@@ -22,19 +22,19 @@ public class VentajasDesventajas {
 
             switch (opcion) {
                 case 1:
-                    mostrarInformacionArrayList();
+                    ArrayList();
                     break;
                 case 2:
-                    mostrarInformacionLinkedList();
+                    LinkedList();
                     break;
                 case 3:
-                    mostrarInformacionHashMap();
+                    HashMap();
                     break;
                 case 4:
-                    mostrarInformacionTreeMap();
+                    TreeMap();
                     break;
                 case 5:
-                    mostrarInformacionLinkedHashMap();
+                    LinkedHashMap();
                     break;
                 case 6:
                     System.out.println("Adiós!");
@@ -45,63 +45,78 @@ public class VentajasDesventajas {
         } while (opcion != 6);
     }
 
-    private void mostrarInformacionArrayList() {
-        System.out.println("ArrayList");
+    private void ArrayList() {
+        System.out.println("----------ArrayList----------");
         System.out.println("Ventajas:");
-        System.out.println("  - Acceso aleatorio rápido a elementos por índice (tiempo de acceso constante)");
+        System.out.println("  - Acceso rápido a elementos por índice (O(1)).\n" + //
+                "- Eficiente en consumo de memoria cuando no hay muchas inserciones o eliminaciones.");
         System.out.println("Desventajas:");
         System.out.println(
-                "  - Inserciones y eliminaciones en posiciones intermedias pueden ser lentas, ya que requieren el desplazamiento de elementos");
+                "- Operaciones de inserción y eliminación en posiciones intermedias o al inicio son costosas (O(n)).\n"
+                        + //
+                        "- Tamaño de la lista debe aumentar al alcanzar su capacidad, lo que implica realocación de elementos.");
         System.out.println("Uso recomendado:");
         System.out.println(
-                "  - Ideal cuando se necesita un acceso rápido a elementos por índice y no se planea realizar muchas inserciones o eliminaciones");
+                "  - Ideal para listas donde se accede frecuentemente a elementos por su posición y hay pocas modificaciones.");
     }
 
-    private void mostrarInformacionLinkedList() {
-        System.out.println("LinkedList");
+    private void LinkedList() {
+        System.out.println("----------LinkedList----------");
         System.out.println("Ventajas:");
         System.out.println(
-                "  - Eficiente en inserciones y eliminaciones al inicio o final, ya que solo requiere cambiar referencias de nodos");
+                "  - Inserción y eliminación de elementos son rápidas (O(1)), ya que no es necesario reorganizar otros elementos.\n"
+                        + //
+                        "- No necesita predefinir tamaño y crece dinámicamente.\n" + //
+                        "");
         System.out.println("Desventajas:");
         System.out.println(
-                "  - Acceso a elementos específicos puede ser lento debido a la necesidad de recorrer la lista hasta el elemento deseado");
+                "  - Acceso a elementos por índice es más lento (O(n)), ya que requiere recorrer la lista desde el inicio.\n"
+                        + //
+                        "- Consumo de memoria más alto debido a que cada nodo almacena referencias adicionales.");
         System.out.println("Uso recomendado:");
         System.out.println(
-                "  - Útil cuando se realizan muchas inserciones y eliminaciones en ambos extremos de la lista y no se necesita un acceso rápido por índice");
+                " - Adecuada para colecciones con inserciones y eliminaciones frecuentes, sin acceso por índice.");
     }
 
-    private void mostrarInformacionHashMap() {
-        System.out.println("HashMap");
+    private void HashMap() {
+        System.out.println("----------HashMap----------");
         System.out.println("Ventajas:");
         System.out.println(
-                "  - Búsqueda y actualizaciones rápidas (tiempo constante promedio) gracias a su estructura hash");
+                "  - Búsqueda, inserción y eliminación de elementos son rápidas (O(1)) en promedio.\n" + //
+                        "- No mantiene orden de los elementos, permitiendo una estructura de datos eficiente.");
         System.out.println("Desventajas:");
-        System.out.println("  - No mantiene un orden de los elementos");
+        System.out.println(
+                "  - No garantiza orden; si necesitas orden de inserción u orden natural, no es la mejor opción.\n" + //
+                        "- Colisiones pueden disminuir la eficiencia y requieren estrategias de manejo de colisiones.");
         System.out.println("Uso recomendado:");
         System.out.println(
-                "  - Excelente para almacenar pares clave-valor cuando el orden de los elementos no es importante y se necesita acceso rápido");
+                "  - Ideal para aplicaciones de mapeo rápido, donde el orden no es necesario y la eficiencia es una prioridad.");
     }
 
-    private void mostrarInformacionTreeMap() {
-        System.out.println("TreeMap");
+    private void TreeMap() {
+        System.out.println("----------TreeMap----------");
         System.out.println("Ventajas:");
         System.out.println(
-                "  - Mantiene el orden de los elementos según la clave y permite operaciones de rango eficiente");
+                "  - Mantiene los elementos ordenados de acuerdo a la clave.\n" + //
+                        "- Ideal para búsquedas en intervalos y acceso ordenado.");
         System.out.println("Desventajas:");
-        System.out.println("  - Ligeramente más lento que HashMap debido al mantenimiento del orden");
+        System.out.println(
+                "  - Operaciones de inserción, eliminación y búsqueda son más lentas (O(log n)) comparado con HashMap.");
         System.out.println("Uso recomendado:");
         System.out.println(
-                "  - Útil cuando es importante tener los elementos ordenados y realizar operaciones de rango en las claves");
+                "  - Útil cuando se necesita ordenamiento de los elementos por claves.");
     }
 
-    private void mostrarInformacionLinkedHashMap() {
-        System.out.println("LinkedHashMap");
+    private void LinkedHashMap() {
+        System.out.println("----------LinkedHashMap----------");
         System.out.println("Ventajas:");
-        System.out.println("  - Proporciona acceso rápido similar a HashMap y mantiene el orden de inserción");
+        System.out.println("  - Mantiene el orden de inserción de los elementos.\n" + //
+                "- Buen desempeño en búsquedas (O(1)), similar a HashMap.");
         System.out.println("Desventajas:");
-        System.out.println("  - Consume ligeramente más memoria para mantener el orden de inserción");
+        System.out.println(
+                "  - Consume más memoria que HashMap debido al almacenamiento adicional para mantener el orden de inserción.");
         System.out.println("Uso recomendado:");
         System.out.println(
-                "  - Ideal para aplicaciones donde es importante mantener el orden de los elementos, como en cachés que dependen del orden de uso o de inserción");
+                "  - Adecuado para colecciones en las que se requiere eficiencia en las búsquedas y un orden específico (de inserción).");
     }
 }

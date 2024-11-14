@@ -3,13 +3,12 @@ package PilasColas;
 import PilasColasconListas.UnderflowException;
 
 public class ColasArray {
-    private int[] array;       
-    private int front;       
-    private int back;           
-    private int currentSize;     
-    private final int DEFAULT_CAPACITY = 100;       
+    private int[] array;
+    private int front;
+    private int back;
+    private int currentSize;
+    private final int DEFAULT_CAPACITY = 100;
 
- 
     public ColasArray() {
         array = new int[DEFAULT_CAPACITY];
         front = 0;
@@ -17,9 +16,9 @@ public class ColasArray {
         currentSize = 0;
     }
 
-    public void makeEmpty(){
-        front=0;
-        back=-1;
+    public void makeEmpty() {
+        front = 0;
+        back = -1;
     }
 
     // Método para verificar si la cola está vacía
@@ -41,7 +40,7 @@ public class ColasArray {
     // Método para eliminar el elemento al frente de la cola
     public int dequeue() {
         if (isEmpty()) {
-           throw new UnderflowException("ArrayQueue empty");
+            throw new UnderflowException("ArrayQueue empty");
         }
         // Almacenar el elemento en el frente y luego incrementar el índice de front
         int elementoFrente = array[front];
@@ -57,7 +56,8 @@ public class ColasArray {
         }
         return array[front];
     }
-     // Método para mostrar todos los elementos de la cola sin modificarlos
+
+    // Método para mostrar todos los elementos de la cola sin modificarlos
     public void mostrarCola() {
         if (isEmpty()) {
             throw new UnderflowException("ArrayQueue empty");
@@ -69,8 +69,8 @@ public class ColasArray {
         System.out.println();
     }
 
-    private void doubleArray(){
-        array = (int []) new int[array.length*2];
+    private void doubleArray() {
+        array = (int[]) new int[array.length * 2];
     }
 
     public void shellsort() {

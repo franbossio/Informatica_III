@@ -3,10 +3,10 @@ package General;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class HashMap_C {
-    public void ejecutarHashMap_C(){
+public class HashMap3 {
+    public void ejecutarHashMap() {
         // Crear un HashMap
-        HashMap<String, MyObject> hashMap = new HashMap<>();
+        HashMap<String, Objeto> hashMap = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese la cantidad de objetos a agregar:");
         int cantidadObjetos = scanner.nextInt();
@@ -18,7 +18,7 @@ public class HashMap_C {
             System.out.println("Ingrese el número de telefono" + i + ": ");
             int numero = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer de entrada
-            hashMap.put("telefono" + i, new MyObject(nombre, numero));
+            hashMap.put("telefono" + i, new Objeto(nombre, numero));
         }
 
         // ii. Imprimir el HashMap completo
